@@ -3,13 +3,23 @@ html {
     color: black;
 }
 
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex-grow: 1;
+}
 body, html {
     height: 100%;
     margin: 0;
     padding: 0;
-    color: yellow;
+    color: white;
     background: black;
     overflow-x : hidden;
+    overflow-y: auto;
 }
 
 .hero {
@@ -28,6 +38,7 @@ body, html {
     display: flex;
     flex-direction: row;
     text-align: center;
+    letter-spacing: 4rem;
 } 
 
 .hero-content {
@@ -72,14 +83,15 @@ p.hero-subhead {
 }
 
 .keyword {
-    font-size: 1.5rem;
+    font-size: 2rem;
 }
 
 .hero-keywords {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    gap: 2rem;
+    gap: 10rem;
+    font-size: 2rem;
 }
 
 .keyword-carousel {
@@ -87,7 +99,7 @@ p.hero-subhead {
     white-space: nowrap;
     box-sizing: border-box;
     position: relative; /* Add this line */
-    width: 100%; /* Ensure the container does not exceed the viewport width */
+    width: 100%; 
 }
 
 .keyword-carousel-inner {
@@ -104,15 +116,14 @@ p.hero-subhead {
     }
 }
 
-/* navbar */
+
 
 .navbar {
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-end;
     align-items: center;
-    padding: 2rem 2rem;
+    padding: 2rem 0;
     background: #000;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     position: fixed;
     width: 100%;
     top: 0;
@@ -128,19 +139,30 @@ p.hero-subhead {
 .navbar ul {
     list-style: none;
     display: flex;
-    gap: 2.2rem;
+    gap: 7rem;
+    padding: 0;
+    margin: 0;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.navbar ul li {
+    flex-shrink: 0;
 }
 
 .navbar ul li a {
     text-decoration: none;
     color: #fff;
-    font-size: 1.5rem;
+    font-size: 2rem;
     transition: color 0.3s;
+    text-transform: uppercase;
+    white-space: nowrap;
 }
 
 .navbar ul li a:hover {
     color: #007BFF;
 }
+
 
 /* WHAT WE OFFER */
 
