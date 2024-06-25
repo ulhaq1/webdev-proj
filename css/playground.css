@@ -187,7 +187,9 @@ html, body {
 
 .infinite-scroll-content {
     width: 200vw;
+    min-width: 1800px;
     height: 180vh;
+    min-height: 1600px;
     position: relative;
     display: block;
 
