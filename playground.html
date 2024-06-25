@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/playground.css">
+    <title>Playground</title>
+</head>
+<body>
+    <div class="wrapper" >
+        <div class="main-text">
+            <div class="heading heading1">
+                <h1 class="playground">P</h1>
+                <h1 class="playground">L</h1>
+                <h1 class="playground">A</h1>
+                <h1 class="playground">Y</h1>
+            </div>
+            <div class="heading heading2">
+                <h1 class="playground">G</h1>
+                <h1 class="playground">R</h1>
+                <h1 class="playground">O</h1>
+                <h1 class="playground">U</h1>
+                <h1 class="playground">N</h1>
+                <h1 class="playground">D</h1>
+            </div>
+            <p class="secondary-text">INTERACTIVE ELEMENTS</p>
+            <div class="rods"></div>
+        </div>
+    </div>
+    
+    <svg class="circle" height="100" width="100">
+        <circle cx="50" cy="50" r="40" fill="white" />
+    </svg>
+    <div class="infinite-scroll-container"></div>
+    <div class="container-mobile">
+        <div class="item item1">1</div>
+        <div class="item item2">2</div>
+        <div class="item item3">3</div>
+        <div class="item item4">4</div>
+        <div class="item item5">5</div>
+        <div class="item item6">6</div>
+        <div class="item item7">7</div>
+        <div class="item item8">8</div>
+        <div class="item item9">9</div>
+    </div>
+    <div class="home-button">
+        <a href="index.html">Home</a>
+        <div class="circular-border">
+            <div class="segment"></div>
+            <div class="segment"></div>
+            <div class="segment"></div>
+            <div class="segment"></div>
+        </div>
+    </div>
+</body>
+</html>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+
+<script>
+    window.onload = function() {
+        if (window.innerWidth > 1200) {
+            gsap.from(".playground", {duration: 3, y: "-100vh", rotate: 0, stagger: 0.1, ease: "elastic", delay: 0.5,
+                onComplete: () => {
+                    gsap.to('.secondary-text', {duration: 1.5, opacity: 1, ease: 'power1.inOut'}, '-=2');
+                    gsap.to('.circle', {duration: 2, scale: 50, ease: 'power1.inOut', onComplete: () => {
+                        document.querySelector('.wrapper').remove();
+                        gsap.to('.circle', {duration: 1, x:'140vw', y: '140vh', scale: 0, ease: 'power1.inOut', onComplete: () => { document.querySelector('.circle').remove(); }})
+                    }})
+                }
+            })
+        }
+        else {
+            gsap.from(".playground", {duration: 3, y: "-100vh", rotate: 0, stagger: 0.1, ease: "elastic", delay: 0.5,
+                onComplete: () => {
+                    gsap.to('.secondary-text', {duration: 1.5, opacity: 1, ease: 'power1.inOut'}, '-=2');
+                    gsap.to('.circle', {duration: 2, scale: 50, ease: 'power1.inOut', onComplete: () => {
+                        document.querySelector('.wrapper').remove();
+                        gsap.to('.circle', {duration: 1, x:'140vw', y: '140vh', scale: 0, ease: 'power1.inOut', onComplete: () => { document.querySelector('.circle').remove(); document.querySelector('.container-mobile').style.visibility = 'visible'; }})
+                    }})
+                }
+            })
+        }
+
+        const button = document.querySelector('.home-button');
+        const border = document.querySelector('.circular-border');
+
+        button.addEventListener('mousemove', (e) => {
+            const rect = button.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            border.style.transform = `translate(${x - rect.width / 2}px, ${y - rect.height / 2}px)`;
+        });
+
+        button.addEventListener('mouseenter', () => {
+            border.style.opacity = 1;
+        });
+
+        button.addEventListener('mouseleave', () => {
+            border.style.opacity = 0;
+            border.style.transform = 'translate(0, 0)';
+        });
+    }
+    setTimeout(() => {
+        let container = document.querySelector('.infinite-scroll-container');
+        var n=9;
+        if (window.innerWidth < 1100) n=9;
+        for (let i=0; i<n; i++) {
+            let content = `<div class="infinite-scroll-content">
+                <div class="item item1">1</div>
+                <div class="item item2">2</div>
+                <div class="item item3">3</div>
+                <div class="item item4">4</div>
+                <div class="item item5">5</div>
+                <div class="item item6">6</div>
+                <div class="item item7">7</div>
+                <div class="item item8">8</div>
+                <div class="item item9">9</div></div>`
+            container.innerHTML += content;
+        }
+
+        let item5 = document.querySelectorAll('.item5');
+        item5.forEach(item => {
+            item.innerHTML = `<div class="container"><div class="control trigger-box"><svg width="30" height="30" viewBox="0 0 50 50"><polygon points="10,5 40,25 10,45" fill="white" /></svg></div>
+            <div class="boxes" style="display: grid; grid-template-columns: repeat(3, 1fr); row-gap: 38px; margin: 50px 0 50px 50px;">
+              <div class="box"></div>
+              <div class="box"></div>
+              <div class="box"></div>
+              <div class="box"></div>
+              <div class="box"></div>
+              <div class="box"></div>
+              <div class="box"></div>
+              <div class="box"></div>
+              <div class="box"></div>
+            </div>
+          </div>`;
+        })
+        let triggerBoxes = document.querySelectorAll('.trigger-box');
+        triggerBoxes.forEach(triggerBox => {
+            triggerBox.addEventListener('click', ()=> {
+                const boxes = triggerBox.parentNode.querySelectorAll('.box');
+                const tl = gsap.timeline({defaults: { stagger: 0.2 }}); // Increase stagger to create a wave effect
+                tl.to(boxes, {transform: 'scale(1.2)', autoAlpha: 0.4, duration: 0.3, ease: 'power2.inOut'}) // Increase duration for smoother animation
+                  .to(boxes, {transform: 'scale(1)', autoAlpha: 1, duration: 0.15}, '-=0.27'); // Increase duration for smoother animation and adjust relative position for a more fluid transition
+            });
+        });
+    
+        let item1 = document.querySelectorAll('.item1'); //pacman
+        item1.forEach(items => {
+            items.innerHTML = `<div class="container pac" style="display: flex; align-items: center; justify-content: center; position: relative ;"><div class="control pacman-trigger"><svg width="30" height="30" viewBox="0 0 50 50"><polygon points="10,5 40,25 10,45" fill="white" /></svg></div>
+            <svg class="myPacman" height="40" width="40">
+              <g class="pacman">
+                <circle cx="20" cy="20" r="15"/>
+                <polygon points="20,20 38,10 38,30"/>
+              </g>
+            </svg>
+            <div class="container-text-container pacman-text" style="display: flex; flex-direction: row; gap: 4px;">
+              <p class="container-text">S</p>
+              <p class="container-text">V</p>
+              <p class="container-text">E</p>
+              <p class="container-text">L</p>
+              <p class="container-text">T</p>
+              <p class="container-text">E</p>
+            </div></div>`
+        })
+        const pacTriggers = document.querySelectorAll('.pacman-trigger');
+        pacTriggers.forEach(pacmanTrigger => {
+            pacmanTrigger.addEventListener('click', () => {
+                var heading = pacmanTrigger.parentNode.querySelectorAll('.pacman-text p');
+                var headingPositions = [];
+                heading.forEach((letter, index) => {
+                    headingPositions[index]= letter.getBoundingClientRect();
+                    heading[index].style.visibility = 'hidden';
+                });
+                let pacman = pacmanTrigger.parentNode.querySelector('.myPacman g.pacman polygon');
+                let tl = gsap.timeline({repeat: 3});
+                tl.to(pacman, {duration: 0.5, attr: {points: '20,20 38,19 38,19'}})
+                .to(pacman, {duration: 0.5, attr: {points: '20,20 38,10 38,30'}});
+                
+                let pacmanNeu = pacmanTrigger.parentNode.querySelector('.myPacman');
+                let pos = pacmanTrigger.parentNode.getBoundingClientRect();
+                let scrollY = window.scrollY;
+                gsap.to(pacmanNeu, {
+                    duration: 2.5, 
+                    x: 250, 
+                    ease: 'power1.Out',
+                    delay: 1,
+                    onUpdate: () => {
+                    let pacPos = pacmanNeu.getBoundingClientRect().left-10;
+                    heading.forEach((letter, index) => {
+                        let pacPos = pacmanNeu.getBoundingClientRect().left+10;
+                        if (Math.abs(pacPos - headingPositions[index].left) < 5) {
+                        letter.style.visibility = 'visible';
+                        }
+                    })
+                    },
+                    onComplete: () => {
+                    setTimeout(() => {
+                        pacmanNeu.style.transform = ''; // Reset the transform property
+                    }, 1000);
+                    }
+                })
+            });
+        })
+
+        let item2 = document.querySelectorAll('.item2'); // text loading animation 1 (SVELTE)
+        item2.forEach(item => {
+            item.innerHTML = `<div class="container loading-animation" style="display: flex; align-items: center; justify-content: center;"><div class="control"><svg width="30" height="30" viewBox="0 0 50 50"><polygon points="10,5 40,25 10,45" fill="white" /></svg></div>
+            <div class="container-text-container" style="display: flex; flex-direction: row; gap: 4px;">
+              <p class="container-text">S</p>
+              <p class="container-text">V</p>
+              <p class="container-text">E</p>
+              <p class="container-text">L</p>
+              <p class="container-text">T</p>
+              <p class="container-text">E</p>
+            </div>
+          </div>`
+        })
+        let loadingAnimations = document.querySelectorAll('.loading-animation .control');
+        loadingAnimations.forEach(loadingAnimation => {
+            loadingAnimation.addEventListener('click', () => {
+                let heading = loadingAnimation.parentNode.querySelectorAll('.loading-animation p');
+                let headingPositions = [];
+                heading.forEach((letter, index) => {
+                    headingPositions[index]= letter.getBoundingClientRect();
+                    heading[index].style.visibility = 'hidden';
+                });
+                let tl = gsap.timeline();
+                tl.from(heading, {y: -50, autoAlpha: 0, stagger: 0.1, rotation: gsap.utils.snap(90, gsap.utils.random(0, 360)), duration: 2.5, ease: 'elastic'});
+            });
+        })
+
+        let item3 = document.querySelectorAll('.item3'); //rect loader
+        item3.forEach(item => {
+            item.innerHTML = `<div class="container rect-loader" style="display: flex; align-items: center; justify-content: center;"><div class="control"><svg width="30" height="30" viewBox="0 0 50 50"><polygon points="10,5 40,25 10,45" fill="white" /></svg></div>
+            <div class="rectangle"><div class="color-overlay"></div></div></div>`
+        })
+        var rects = document.querySelectorAll('.rect-loader .control');
+        rects.forEach(rectLoader => {
+            // const control = rectLoader.querySelector('.control');
+            rectLoader.addEventListener('click', () => {
+                let rect = rectLoader.parentNode.querySelector('.rectangle');
+                let colorOverlay = rectLoader.parentNode.querySelector('.color-overlay');
+                var tl = gsap.timeline();
+                tl.to(colorOverlay, {transform: 'translateY(0)', duration: 5, ease: 'power1.out'})
+                .to(rect, {transform: 'translateX(0)', duration: 0.1, ease: 'power1.out'}, "-=0.5")
+                .to(rect, {transform: 'translateX(-10px)', duration: 0.1, ease: 'power1.out'})
+                .to(rect, {transform: 'translateX(10px)', duration: 0.1, ease: 'power1.out'})
+                .to(rect, {transform: 'translateX(-10px)', duration: 0.1, ease: 'power1.out'})
+                .to(rect, {transform: 'translateX(0)', duration: 0.1, ease: 'power1.out'})
+                .to(colorOverlay, {clearProps: "transform"}, "-=0.5")
+            });
+        })
+
+        let item4 = document.querySelectorAll('.item4'); // circle loader
+        item4.forEach(item => {
+            item.innerHTML = `<div class="container circle-loader" style="display: flex; align-items: center; justify-content: center;"><div class="control"><svg width="30" height="30" viewBox="0 0 50 50"><polygon points="10,5 40,25 10,45" fill="white" /></svg></div>
+            <svg style="width: 50%; height: 50%;" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="50" cy="50" r="40" fill="red" stroke="red" />
+            </svg></div>`
+        })
+        let circles = document.querySelectorAll('.circle-loader .control');
+        circles.forEach(circleLoaderControl => {
+            circleLoaderControl.addEventListener('click', () => {
+                var circle = circleLoaderControl.parentNode.querySelector('.circle-loader circle');
+                var length = Math.PI * 2 * circle.getAttribute('r');
+                gsap.set(circle, {strokeDasharray: length, strokeDashoffset: length, fill: 'none'});
+
+                var tl = gsap.timeline();
+                tl.to(circle, {strokeDashoffset: 0, duration: 2, ease: "power1.out"})
+                    .to(circle, {fill: 'red'}, "-=0.5");
+            });
+        })
+
+        let item6 = document.querySelectorAll('.item6'); //link showcase
+        item6.forEach(item => {
+            item.innerHTML = `<div class="container link-showcase" style="display: flex; align-items: center; justify-content: center; overflow: hidden;">
+            <p style="position: absolute; top: 130px; left: 110px; font-size: 30px; transform: rotate(-45deg); z-index: 0;">Hello</p>
+            <svg style="z-index: 1;" width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+              <polygon points="0,200 200,200 200,0" fill="#fff" /> <!-- bottom one -->
+              <polygon points="0,0 0,200 200,0" fill="#fff" /> <!-- top one -->
+            </svg></div>`
+        })
+        let showcases= document.querySelectorAll('.link-showcase svg');
+        showcases.forEach(showcase => {
+            let triangle1 = showcase.querySelector('polygon:nth-of-type(1)');
+            let triangle2 = showcase.querySelector('polygon:nth-of-type(2)');
+            showcase.addEventListener('mouseenter', () => {
+                gsap.to(triangle1, {duration: 0.5, transform: 'translate(30px, 30px)'});
+                gsap.to(triangle2, {duration: 0.5, transform: 'translate(-30px, -30px)'});
+            })
+            showcase.addEventListener('mouseleave', () => {
+                gsap.to(triangle1, {duration: 0.5, transform: 'translate(0px, 0px)'});
+                gsap.to(triangle2, {duration: 0.5, transform: 'translate(0px, 0px)'});
+            })
+        })
+
+        let item7 = document.querySelectorAll('.item7'); //clock
+        item7.forEach(item => {
+            item.innerHTML = `<div class="container clock" style="display: flex; align-items: center; justify-content: center; ">
+            <div class="control"><svg width="30" height="30" viewBox="0 0 50 50"><polygon points="10,5 40,25 10,45" fill="white" /></svg></div>
+            <svg style="width: 50%; height: 50%;" viewBox="0 0 81 81" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="40.5" cy="40.5" r="40.5" fill="white" stroke="none" />
+              <line x1="40.5" y1="40.5" x2="40.5" y2="0" stroke="black" stroke-width="2"/>
+              <line x1="40.5" y1="40.5" x2="81" y2="40.5" stroke="black" stroke-width="2"/>
+            </svg></div>`
+        });
+        const clocks = document.querySelectorAll('.clock .control');
+        clocks.forEach(clockControl => {
+            let rotate= 30
+            clockControl.addEventListener('click', () => {
+            let clock = clockControl.parentNode.querySelector('.clock svg');
+            let line1 = clockControl.parentNode.querySelector('line:nth-of-type(1)');
+            let line2 = clockControl.parentNode.querySelector('line:nth-of-type(2)');
+            let tl = gsap.timeline({
+                onComplete: () => {
+                gsap.set(line1, {rotation: 0});
+                gsap.set(line2, {rotation: rotate});
+                rotate += 30;
+                if (rotate > 360) {
+                    rotate = 30;
+                }
+                }
+            });
+            tl.to(line1, {duration: 1, rotation: 360, transformOrigin: '100% 100%', ease: 'power1.out'})
+                .to(line2, {duration: 1, rotation: rotate, transformOrigin: '0 0', ease: 'power1.out'}, "-=1");
+            });
+        });
+
+        let item8 = document.querySelectorAll('.item8');
+        item8.forEach(item => {
+            item.innerHTML = `<div class="container" style="display: flex; align-items: center; justify-content: center;">
+            <div style="width: 200px; height: 55px; background-color: #D9D9D9; border-radius: 15px; position: relative;" class="sample-button-one">
+              <svg class="stick-figure" style="position: absolute; left: 20px; top: -18px;" width="15" height="101" viewBox="0 0 65 151" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="33" cy="21" r="19.5" stroke="black" stroke-width="3"/>
+                <path d="M31.5 42V64.5M31.5 115.5L63.5 149M31.5 115.5L2 149M31.5 115.5V64.5M31.5 64.5L63.5 90M31.5 64.5L2 90" stroke="black" stroke-width="3"/>
+              </svg>
+              <svg class="blob" style="position: absolute; right: 15px; top: 5px;" width="20" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="40.5" cy="40.5" r="40.5" fill="#F7B817"/>
+              </svg></div></div>`
+        })
+        let btns1 = document.querySelectorAll('.sample-button-one');
+        btns1.forEach(btn => {
+            btn.addEventListener('mouseenter', () => {
+                let stickFigure = btn.querySelector('.stick-figure circle');
+                let stickFigure2 = btn.querySelector('.stick-figure path');
+                let blob =btn.querySelector('.blob circle');
+                stickFigure.style.stroke = 'white';
+                stickFigure2.style.stroke = 'white';
+                btn.style.backgroundColor = 'gray';
+                blob.style.fill = 'white';
+            });
+            btn.addEventListener('mouseleave', () => {
+                let stickFigure = btn.querySelector('.stick-figure circle');
+                let stickFigure2 = btn.querySelector('.stick-figure path');
+                let blob =btn.querySelector('.blob circle');
+                stickFigure.style.stroke = 'black';
+                stickFigure2.style.stroke = 'black';
+                btn.style.backgroundColor = '#D9D9D9';
+                blob.style.fill = '#F7B817';
+            });
+        })
+
+        let item9 = document.querySelectorAll('.item9');
+        item9.forEach(item => {
+            item.innerHTML = `<div class="container revolution" style="display: flex; align-items: center; justify-content: center; ">
+            <div class="control"><svg width="30" height="30" viewBox="0 0 50 50"><polygon points="10,5 40,25 10,45" fill="white" /></svg></div>
+            <div class="sub-container" style="margin: 0; padding: 0; ">
+              <h1 class="text">S</h1>
+              <h1 class="text">V</h1>
+              <h1 class="text">E</h1>
+              <h1 class="text">L</h1>
+              <h1 class="text">T</h1>
+              <h1 class="text">E</h1>
+              <style>
+                .text {
+                  position: absolute;
+                  font-size: 2.5rem;
+                  color: white;
+                }
+              </style></div></div>`
+        })
+        let revolutions = document.querySelectorAll('.revolution .control');
+        revolutions.forEach(revolution => {
+            revolution.addEventListener('click', () => {
+                var textElements = revolution.parentNode.querySelectorAll('.text');
+                const container = revolution.parentNode.querySelector('.sub-container');
+                var radius = 100; // radius of the circle 
+                var duration = 3; // duration of the animation in seconds
+                var attrs = [[]];
+
+                textElements.forEach(function(text, index) {
+                    const angle = index * (360 / textElements.length);
+                    const kx = radius * Math.cos(angle * Math.PI / 180);
+                    const ky = radius * Math.sin(angle * Math.PI / 180);
+                    attrs[index] = [kx, ky];
+                    gsap.to(text, {
+                        duration: duration,
+                        x: kx,
+                        y: ky,
+                        ease: "power1.inOut",
+                        transformOrigin: "50% 50%"
+                    });
+                });
+
+                function revolve() {
+                    textElements.forEach((text, index) => {
+                        let nextX = attrs[index + 1] ? attrs[index + 1][0] : attrs[0][0];
+                        let nextY = attrs[index + 1] ? attrs[index + 1][1] : attrs[0][1];
+                        gsap.to(text, {
+                            duration: duration,
+                            x: nextX,
+                            y: nextY,
+                            ease: "power1.inOut",
+                            transformOrigin: "50% 50%",
+                            delay: 3
+                        });
+                    });
+                }
+                revolve();
+
+                setTimeout(() => {
+                    const width = 30;
+                    var tempX = (container.offsetWidth - (textElements.length * width)) / 2;
+                    for (let i = 1; i < textElements.length; i++) {
+                        attrs[i] = [tempX, container.offsetHeight / 2];
+                        tempX += width;
+                    }
+                    attrs[0] = [tempX, container.offsetHeight / 2];
+                    revolve();
+                }, 6000);
+                })
+        }) 
+
+        /*---------------------------------------------------------------------------------------*/
+        /**
+         * INFINITE SCROLL
+         */
+        let content = document.querySelectorAll('.infinite-scroll-content');
+        
+        let contentWidth = content[0].offsetWidth ;
+        let contentHeight = content[0].offsetHeight ;
+    
+        let xk = 0;
+        let yk = 0;
+        
+        setTimeout(() => {
+            // if (window.innerWidth > 1100)
+            // container.scrollTo(contentWidth*1.2, contentHeight*1.2);
+        }, 1000)
+    
+        container.addEventListener('wheel', (event) => {
+            event.preventDefault();
+            if (window.innerWidth < 1100) {
+                return;
+            }
+    
+            // Adjust the speed as needed
+            const speed = 0.5;
+    
+            xk -= event.deltaX * speed;
+            yk -= event.deltaY * speed;
+    
+            content.forEach(con => {
+                gsap.set(con, {
+                    x: xk % contentWidth,
+                    y: yk % contentHeight,
+                });
+            });
+    
+            checkBounds();
+        });
+    
+        function checkBounds() {
+            if (xk <= -contentWidth) xk = 0;
+            if (xk >= contentWidth) xk = 0;
+            if (yk <= -contentHeight) yk = 0;
+            if (yk >= contentHeight) yk = 0;
+        }
+    
+        window.addEventListener('resize', () => {
+            contentWidth = content[0].offsetWidth;
+            contentHeight = content[0].offsetHeight;
+        });
+
+    }, 7000)
+</script>

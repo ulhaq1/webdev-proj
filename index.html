@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GHERVE</title>
+    <link rel="stylesheet" href="css/index.css">
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <nav class="navbar">
+      <div class="logo">GHERVE</div>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="playground.html" target="_blank">Playground</a></li>
+        <li><a href="#about">Contact</a></li>
+      </ul>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+          <div class="headings">
+            <div class="hero-heading">
+              <h1 class="gherve">G</h1>
+              <h1 class="gherve">H</h1>
+              <h1 class="gherve">E</h1>
+              <h1 class="gherve">R</h1>
+              <h1 class="gherve">V</h1>
+              <h1 class="gherve">E</h1>
+            </div>
+            <!-- <p class="hero-subhead">Your vision, our expertise. Expert web design tailored to your needs.</p> -->
+            <div class="hero-keywords">
+              <p class="keyword">FRONTEND</p>
+              <p class="keyword">POWERFUL ANIMATIONS</p>
+              <p class="keyword">RESPONSIVE</p>
+            </div>
+          </div>
+          <div class="keyword-carousel">
+            <div class="keyword-carousel-inner">
+              <svg id="marquee" style="margin-right: 40px;" xmlns="http://www.w3.org/2000/svg" width="1570" height="200">
+                <text x="0" y="150" stroke="white" class="wort">DEV</text>
+                <text x="470" y="150" stroke="white" class="wort">CODE</text>
+                <text x="1110" y="150" stroke="white" class="wort">WEB</text>
+              </svg>
+              <svg id="marquee" xmlns="http://www.w3.org/2000/svg" width="1570" height="200">
+                <text x="0" y="150" stroke="white" class="wort">DEV</text>
+                <text x="470" y="150" stroke="white" class="wort">CODE</text>
+                <text x="1110" y="150" stroke="white" class="wort">WEB</text>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    <section class="hero-sub-section">
+    </section>
+
+    <section class="section2">
+      <div class="whatweoffer">
+        <div class="heading-offer">WHAT WE OFFER</div>
+        <div class="offer-container">
+          <div class="offer-item">
+            <h1>Custom Websites</h1>
+            <p>We create unique, responsive websites tailored to your specific needs, ensuring flawless, responsive functionality across all devices (including tablets, phones, and laptops).</p>
+          </div>
+          <div class="offer-item">
+            <h1>Responsive Design</h1>
+            <p>Creating websites that look and work great on any device from phones, tablets, and laptops, ensuring an optimal user experience everywhere.</p>
+          </div>
+          <div class="offer-item">
+            <h1>Frontend Tech</h1>
+            <p>Using HTML5, CSS3, JavaScript, and Svelte framework combined with GSAP for animation, We build stunning, interactive user interfaces for an engaging experience.</p>
+          </div>
+      </div>
+    </section>
+
+    <section class="section3">
+      <div class="heading-playground">Check out some sample User Interactive elements!</div>
+      <button class="playground-button" onclick="window.location.href='playground.html'">Playground</button>
+    </section>
+
+</body>
+</html>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/ScrollTrigger.min.js"></script>
+
+<script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    var heroSubSection = document.querySelector('.hero-sub-section');
+    const heroSSHeight= heroSubSection.offsetHeight;
+    const heroSSWidth= heroSubSection.offsetWidth;
+
+    // hero sub section
+    window.addEventListener('DOMContentLoaded', () => {
+      const rectWidth= heroSSWidth;
+      const rectHeight= 100;
+      let svgns = "http://www.w3.org/2000/svg";
+      let svgElem = document.createElementNS(svgns, "svg");
+      svgElem.setAttributeNS(null, "height", heroSSHeight);
+      svgElem.setAttributeNS(null, "width", heroSSWidth);
+      const keywords = ['INNOVATIVE', 'TRANSFORMATIVE', 'COHESIVE'];
+      
+      let currentHeight = 0;
+      const gap = 3; // adjust this value to change the gap between rectangles
+      let index = 0;
+
+      while (currentHeight +gap < heroSSHeight) {
+        let txt = document.createElementNS(svgns, 'text');
+        let group = document.createElementNS(svgns, 'g');
+        let rect = document.createElementNS(svgns, 'rect');
+        let txt2 = document.createElementNS(svgns, 'text');
+        
+        rect.setAttributeNS(null, 'height', rectHeight);
+        rect.setAttributeNS(null, 'width', rectWidth);
+        rect.setAttributeNS(null, 'fill', 'black');
+        rect.setAttributeNS(null, 'y', 0); // set y to 0 because it's now relative to the group
+      
+        txt2.setAttributeNS(null, 'fill', 'white');
+        txt2.setAttributeNS(null, 'y', -rectHeight/2); // set y to -rectHeight/2 because it's now relative to the group
+        txt2.setAttributeNS(null, 'x', rectWidth/2);
+        txt2.setAttributeNS(null, 'text-anchor', 'middle');
+        txt2.setAttributeNS(null, 'font-size', '30');
+        txt2.setAttributeNS(null, 'class', 'text2');
+        txt2.textContent = keywords[index];
+      
+        group.setAttributeNS(null, 'transform', `translate(0, ${currentHeight})`); // set the group's y position to currentHeight
+      
+        group.appendChild(rect);
+        // group.appendChild(txt2);
+        
+        
+        txt.setAttributeNS(null, 'fill', 'black');
+        txt.setAttributeNS(null, 'y', currentHeight+rectHeight/2);
+        txt.setAttributeNS(null, 'x', rectWidth/2);
+        txt.setAttributeNS(null, 'text-anchor', 'middle');
+        txt.setAttributeNS(null, 'font-size', '30');
+        txt.setAttributeNS(null, 'class', 'text1');
+        txt.textContent = keywords[index];
+        index = (index+1)%keywords.length;
+          
+        svgElem.appendChild(txt);
+        currentHeight += rectHeight + gap;
+        svgElem.appendChild(group);
+      }
+      heroSubSection.appendChild(svgElem);
+
+      //hero sub section animation
+      gsap.from('.hero-sub-section svg rect', {
+        scrollTrigger: {
+          trigger: '.hero-sub-section',
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: 1,
+          // markers: true
+        },
+        opacity: 0,
+        y: heroSSHeight,
+        stagger: 0.1
+      });
+      gsap.from('.hero-sub-section svg .text1', {
+        scrollTrigger: {
+          trigger: '.hero-sub-section',
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: 1,
+        },
+        y: heroSSHeight,
+        stagger: 0.5
+      });
+    });
+
+    //marquee
+    const marquee = document.querySelector('.keyword-carousel-inner');
+    marquee.innerHTML += marquee.innerHTML;
+    const totalWidth = marquee.offsetWidth / 2;
+
+    gsap.to(marquee, {
+      x: -totalWidth,
+      duration: 13,
+      repeat: -1,
+      ease: "none",
+      modifiers: {
+        x: gsap.utils.unitize(x => parseFloat(x) % totalWidth)
+      }
+    });
+
+    /* WHAT WE OFFER SCRIPT */
+
+    var windowSize = document.documentElement.clientWidth;
+    document.querySelectorAll('.offer-item').forEach(item => {
+      if (windowSize < 1100) return;
+      let info = item.querySelector('p')
+      let heading = item.querySelector('h1')
+      item.addEventListener('mouseenter', () => {
+        let tl =gsap.timeline();
+        tl.to(info, {
+          duration: 0.5,
+          x: 0
+        }).to(heading, {
+          duration: 0.5,
+          x: '-100vw'
+        }, '-=0.5')
+      })
+      item.addEventListener('mouseleave', () => {
+        let tl =gsap.timeline();
+        tl.to(info, {
+          duration: 0.5,
+          x: '100vw'
+        }).to(heading, {
+          duration: 0.5,
+          x: 0
+        }, '-=0.5')
+      })
+    })
+
+    window.addEventListener('resize', ()=> {
+      windowSize = document.documentElement.clientWidth
+    })
+
+    // playground section
+    gsap.to('.section3', {
+      scrollTrigger: {
+        trigger: '.section3',
+        start: 'top bottom',
+        end: '80% bottom',
+        scrub: 1,
+        // markers: true
+      },
+      backgroundColor: 'black',
+      transform: 'translateX(0)'
+    })
+
+</script>
