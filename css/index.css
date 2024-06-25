@@ -122,7 +122,7 @@ p.hero-subhead {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    padding: 2rem 0;
+    padding: 2.7rem 0;
     background: #000;
     position: fixed;
     width: 100%;
@@ -163,6 +163,10 @@ p.hero-subhead {
     color: #007BFF;
 }
 
+
+.navbar ul li:last-child a {
+    padding-right: 1em;
+}
 
 /* WHAT WE OFFER */
 
