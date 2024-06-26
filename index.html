@@ -90,8 +90,10 @@
     <section class="section4">
       <h1 class="heading-contact">Contact Us</h1>
       <div class="socials-link">
-        <button class="socials-btn">Socials</button>
-        <ul style="display: none;">
+        <button class="socials-btn" onclick="toggleSection()">Socials
+          <div class="arrow" aria-expanded="false">▼</div>
+        </button>
+        <ul class="expandable-section" data-visible="false">
           <li> <a href="">LinkedIn</a></li>
           <li> <a href="">Github</a></li>
           <li> <a href="">Instagram</a></li>
@@ -253,6 +255,19 @@
             nav_toggle.setAttribute('aria-expanded', "false");
         });
     })
+
+    // section4 socials link
+    function toggleSection() {
+    var section = document.querySelector('.expandable-section');
+    const arrow = document.querySelector('.arrow');
+    if (arrow.getAttribute('aria-expanded') === 'false') {
+        section.setAttribute('data-visible', 'true');
+        arrow.setAttribute('aria-expanded', 'true');
+    } else {
+        section.setAttribute('data-visible', 'false');
+        arrow.setAttribute('aria-expanded', 'false');
+    }
+    }
 
     //marquee
     const marquee = document.querySelector('.keyword-carousel-inner');
