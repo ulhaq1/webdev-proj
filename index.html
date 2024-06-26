@@ -6,20 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GHERVE</title>
     <link rel="stylesheet" href="css/index.css">
-    <script src="script.js"></script>
 </head>
 
 <body data-barba="wrapper">
   <main data-barba="container" data-barba-namespace="home">
     <nav class="navbar">
-  <!--     <div class="logo">GHERVE</div> -->
-      <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="playground.html" target="_blank">Playground</a></li>
-        <li><a href="#about">Projects</a></li>
+      <button aria-expanded="false" class="mobile-nav-toggle">&#9776</button>
+      <ul data-visible="false" >
+        <li><a href="#">Home</a></li>
+        <li><a href="playground.html">Playground</a></li>
+        <li><a href="#">Projects</a></li>
         <li><a href="contact">Contact</a></li>
       </ul>
     </nav>
+    <!-- code for menu lines: &#9776;
+     code for cross: &#10005; -->
 
     <section class="hero">
         <div class="hero-content">
@@ -95,8 +96,8 @@
           <a href="#about">Contact</a>
         </div>
         <div class="footer-socials">
-          <a href="" target="_blank"><img src="images/linkedin.png" alt="linkedin"></a>
-          <a href="" target="_blank"><img src="images/github.png" alt="github"></a>
+          <a href="" target="_blank"><img src="" alt="linkedin"></a>
+          <a href="" target="_blank"><img src="" alt="github"></a>
         </div>
       </div>
     </footer>
@@ -192,6 +193,42 @@
         stagger: 0.5
       });
     });
+
+    //navbar listener
+    window.addEventListener('wheel', (event) => {
+      if (window.innerWidth< 850) return;
+      if (event.deltaY>0) {
+        document.querySelector('.navbar').classList.add('hide');
+      }
+      else {
+        document.querySelector('.navbar').classList.remove('hide');
+      }
+    })
+
+    const primary_nav = document.querySelector('.navbar ul');
+    const nav_toggle = document.querySelector('.mobile-nav-toggle');
+
+    nav_toggle.addEventListener('click', () => {
+        const visibility = primary_nav.getAttribute('data-visible');
+        
+        if (visibility === "false") {
+            primary_nav.setAttribute('data-visible', "true");
+            nav_toggle.setAttribute('aria-expanded', "true");
+            nav_toggle.innerHTML = '&#10005;';
+        } else if (visibility === "true") {
+            primary_nav.setAttribute('data-visible', "false");
+            nav_toggle.setAttribute('aria-expanded', "false");
+            nav_toggle.innerHTML = '&#9776;';
+        }
+    });
+
+    let navElements = document.querySelectorAll('.primary-navigation a');
+    navElements.forEach((element) => {
+        element.addEventListener('click', () => {
+            primary_nav.setAttribute('data-visible', "false");
+            nav_toggle.setAttribute('aria-expanded', "false");
+        });
+    })
 
     //marquee
     const marquee = document.querySelector('.keyword-carousel-inner');
