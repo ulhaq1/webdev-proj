@@ -10,7 +10,7 @@
 
 <body data-barba="wrapper">
   <main data-barba="container" data-barba-namespace="home">
-    <nav class="navbar">
+    <nav class="navbar" aria-expanded="false">
       <button aria-expanded="false" class="mobile-nav-toggle">&#9776</button>
       <ul data-visible="false" >
         <li><a href="#">Home</a></li>
@@ -153,7 +153,6 @@
         group.appendChild(rect);
         // group.appendChild(txt2);
         
-        
         txt.setAttributeNS(null, 'fill', 'black');
         txt.setAttributeNS(null, 'y', currentHeight+rectHeight/2);
         txt.setAttributeNS(null, 'x', rectWidth/2);
@@ -206,6 +205,7 @@
     })
 
     const primary_nav = document.querySelector('.navbar ul');
+    const navParent = document.querySelector('.navbar');
     const nav_toggle = document.querySelector('.mobile-nav-toggle');
 
     nav_toggle.addEventListener('click', () => {
@@ -214,10 +214,12 @@
         if (visibility === "false") {
             primary_nav.setAttribute('data-visible', "true");
             nav_toggle.setAttribute('aria-expanded', "true");
+            navParent.setAttribute('aria-expanded', "true");
             nav_toggle.innerHTML = '&#10005;';
         } else if (visibility === "true") {
             primary_nav.setAttribute('data-visible', "false");
             nav_toggle.setAttribute('aria-expanded', "false");
+            navParent.setAttribute('aria-expanded', "false");
             nav_toggle.innerHTML = '&#9776;';
         }
     });
