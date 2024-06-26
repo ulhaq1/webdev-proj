@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GHERVE</title>
     <link rel="stylesheet" href="css/index.css">
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+    </style>
 </head>
 
 <body data-barba="wrapper">
@@ -107,9 +110,11 @@
 
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/Flip.min.js"></script>
 
 <script>
     gsap.registerPlugin(ScrollTrigger);
+    gsap.registerPlugin(Flip)
 
     var heroSubSection = document.querySelector('.hero-sub-section');
     const heroSSHeight= heroSubSection.offsetHeight;
@@ -216,6 +221,11 @@
             nav_toggle.setAttribute('aria-expanded', "true");
             navParent.setAttribute('aria-expanded', "true");
             nav_toggle.innerHTML = '&#10005;';
+            gsap.from('.navbar ul li', {
+                scaleY: -1, // Flipped state
+                duration: 0.5,
+                stagger: 0.2,
+            });
         } else if (visibility === "true") {
             primary_nav.setAttribute('data-visible', "false");
             nav_toggle.setAttribute('aria-expanded', "false");

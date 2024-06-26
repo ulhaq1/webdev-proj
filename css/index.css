@@ -1,3 +1,7 @@
+:root {
+    --main-font: "Inter", sans-serif;
+}
+
 html {
     font-size: 62.5%;
     color: black;
@@ -30,7 +34,9 @@ body, html {
 }
 
 .hero-heading {
+    font-family: var(--main-font);
     margin-top: 1.5em;
+    font-weight: 400;
     font-size: 5em;
     display: flex;
     flex-direction: row;
@@ -45,6 +51,7 @@ body, html {
 
 .gherve {
     display: inline-block;
+    font-weight: 400;
     /* visibility: hidden; */
 }
 
@@ -89,6 +96,8 @@ p.hero-subhead {
     justify-content: center;
     gap: 10rem;
     font-size: 2rem;
+    font-family: var(--main-font);
+    font-weight: 400;
 }
 
 .keyword-carousel {
@@ -158,10 +167,12 @@ p.hero-subhead {
 .navbar ul li a {
     text-decoration: none;
     color: #fff;
-    font-size: 2rem;
+    font-size: 1.5rem;
     transition: color 0.3s;
     text-transform: uppercase;
     white-space: nowrap;
+    font-family: var(--main-font);
+    font-weight: 400;
 }
 
 .navbar ul li a:hover {
@@ -211,10 +222,12 @@ p.hero-subhead {
     .navbar ul li {
         width: 100%;
         text-align: center;
+        transform: scaleY(1);
     }
 
     .navbar ul li a {
-        font-size: 2rem;
+        font-size: 6rem;
+        transform-origin: center center;
     }
 }
 
@@ -242,13 +255,14 @@ p.hero-subhead {
 }
 
 .heading-offer {
-    font-size: 8rem;
+    position: relative;
+    font-size: 6rem;
     margin-bottom: 100px;
-    font-weight: bold;
     letter-spacing: 2px;
     width: 100%;
     padding-bottom: 20px;
-    position: relative;
+    font-family: var(--main-font);
+    font-weight: 700;
 }
 
 .offer-container {
@@ -260,11 +274,10 @@ p.hero-subhead {
 }
 
 .offer-container h1 {
-    font-size: 5rem;
+    font-size: 3rem;
     margin: 0;
-    padding: 20px 0;
+    padding: 20px 0 0 0;
     cursor: pointer;
-    transition: color 0.3s ease;
     position: relative; 
     z-index: 1; 
 }
@@ -275,12 +288,16 @@ p.hero-subhead {
     height: 100px;
     align-items: center;
     display: flex;
+    font-family: var(--main-font);
+    font-weight: 400;
+    width: 80%;
+    margin: 0 auto;
     flex-direction: row;
     h1, p {
         position: absolute;
     }
     p {
-        font-size: 2rem;
+        font-size: 1.5rem;
         transform: translateX(100vw);
     }
 }
@@ -301,6 +318,16 @@ p.hero-subhead {
 
 .offer-container::after {
     bottom: 0;
+}
+
+@media (min-width: 1100px) {
+    .offer-item {
+        width: 100%;
+    }
+
+    .offer-container h1 {
+        padding: 0 0 0 0;
+    }
 }
 
 .section3 {
