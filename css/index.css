@@ -332,7 +332,7 @@ p.hero-subhead {
 
 .section3 {
     height: 100vh;
-    min-height: 700px;
+    min-height: 400px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -404,9 +404,75 @@ p.hero-subhead {
     transform: translateX(-20%) scale(4) rotate(30deg) ;
 }
 
-/**
-* FOOTER 
-**/
+/** ==========================
+* ==== SECTION 4: CONTACT =====
+* ============================*/
+
+.section4 {
+    height: 100vh;
+    min-height: 700px;
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+    align-items: center;
+    justify-content: center;
+}
+
+.heading-contact {
+    font-size: 4rem;
+    font-weight: 700;
+    position: relative;
+    text-align: center;
+    font-family: var(--main-font);
+}
+
+.socials-btn {
+    position: relative;
+    width: 150px;
+    height: 30px;
+    background-color: white;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-bottom: 1px solid black;
+}
+
+.socials-link {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    width: 8rem;
+    align-items: center;
+    
+    ul {
+        justify-content: center;
+        align-items: center;
+        list-style: none;
+    }
+    li a {
+        text-decoration: none;
+        color: black;
+        font-size: 1rem;
+        transition: color 0.3s;
+        text-align: center;
+    }   
+}
+
+.socials-btn::after {
+    content: "";
+    position: absolute;
+    bottom: -90px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 10px;
+    background-color: red;
+}
+
+/** ==============
+* ==== FOOTER ====
+* ===============*/
 
 footer {
     background: rgb(59, 58, 58);
