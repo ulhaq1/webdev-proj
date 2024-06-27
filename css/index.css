@@ -1,5 +1,6 @@
 :root {
     --main-font: "Inter", sans-serif;
+    --bold-font: "Roboto", sans-serif;
 }
 
 /* CURSOR */
@@ -566,6 +567,81 @@ p.hero-subhead {
         transform: translateX(0);
         background-color: black;
     }
+}
+
+/**=================
+===== SECTION 5: PROJECTSS ====
+ ===============***/
+
+.latest-projects {
+  background-color: black;
+  color: white;
+  padding: 50px 0;
+}
+
+.projects-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.project-text {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.project-text h2 {
+  font-family: var(--bold-font);
+  font-size: 4.5rem;
+  font-weight: bold;
+  margin-bottom: 30px;
+  letter-spacing: 1px;
+}
+
+.project-text p {
+  font-family: var(--main-font);
+  font-size: 2rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  letter-spacing: 0.5px;
+}
+
+.project-image {
+  flex: 1;
+}
+
+.project-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+  .projects-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .project-text {
+    margin-bottom: 20px;
+    margin-right: 0;
+  }
+
+  .project-text h2 {
+    font-size: 3.5rem;
+  }
+
+  .project-text p {
+    font-size: 1.8rem;
+  }
+
+  .project-image img {
+    width: 100%;
+  }
 }
 
 /** ==============
