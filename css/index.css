@@ -163,7 +163,6 @@ p.hero-subhead {
 
 .col1 {
     width: 10%;
-
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -188,6 +187,20 @@ p.hero-subhead {
         display: flex;
         flex-direction: row;
         overflow: hidden;
+
+        span {
+            position: relative;
+        }
+    }
+
+    .keyword-sub:nth-of-type(3) span .after {
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        position: absolute;
+        content: "";
+        background: white;
     }
 }
 
@@ -359,7 +372,7 @@ p.hero-subhead {
     width: 100%;
     padding-bottom: 20px;
     font-family: var(--main-font);
-    font-weight: 700;
+    font-weight: 900;
 }
 
 .offer-container {

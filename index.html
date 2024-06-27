@@ -109,16 +109,16 @@
           <span>e</span>
         </h1>
         <h1 class="keyword-sub">
-          <span>I</span>
-          <span>n</span>
-          <span>n</span>
-          <span>o</span>
-          <span>v</span>
-          <span>a</span>
-          <span>t</span>
-          <span>i</span>
-          <span>v</span>
-          <span>e</span>
+          <span>I<span class="after"></span></span>
+          <span>n<span class="after"></span></span>
+          <span>n<span class="after"></span></span>
+          <span>o<span class="after"></span></span>
+          <span>v<span class="after"></span></span>
+          <span>a<span class="after"></span></span>
+          <span>t<span class="after"></span></span>
+          <span>i<span class="after"></span></span>
+          <span>v<span class="after"></span></span>
+          <span>e<span class="after"></span></span>
         </h1>
       </div>
       <div class="col1">
@@ -359,7 +359,7 @@
 
     //hero sub section
     const firstKeyword= document.querySelectorAll('.keyword-sub:nth-of-type(1) span');
-    const secondKeyword= document.querySelector('.keyword-sub:nth-of-type(2)');
+    const secondKeyword= document.querySelectorAll('.keyword-sub:nth-of-type(2) span');
     const thirdKeyword= document.querySelector('.keyword-sub:nth-of-type(3)');
 
     gsap.from(firstKeyword, {
@@ -371,6 +371,28 @@
       yPercent: function(index) {
         return index % 2 === 0 ? 100 : -100;
       },
+      duration: 1,
+      stagger: 0.1,
+      // repeat: -1,
+    });
+    gsap.utils.toArray(secondKeyword).forEach(letter => {
+      gsap.from(letter, {
+        scrollTrigger: {
+          trigger: firstKeyword,
+          start: "top center",
+          once: true,
+        },
+        scale: Math.random() * 1,
+        duration: 1,
+      });
+    });
+    gsap.to('.keyword-sub:nth-of-type(3) span .after', {
+      scrollTrigger: {
+        trigger: firstKeyword,
+        start: "top center",
+        once: true,
+      },
+      yPercent: 100,
       duration: 1,
       stagger: 0.1,
       // repeat: -1,
@@ -421,6 +443,26 @@
     })
 
     document.querySelector('.keyword-sub:nth-of-type(2)').addEventListener('mouseenter', () => {
+      const randomIndex1 = Math.floor(Math.random() * firstKeyword.length);
+      const randomIndex2 = Math.floor(Math.random() * firstKeyword.length);
+      const letter1 = document.querySelector('.keyword-sub:nth-of-type(2) span:nth-of-type(' + randomIndex1 + ')');
+      const letter2 = document.querySelector('.keyword-sub:nth-of-type(2) span:nth-of-type(' + randomIndex2 + ')');
+      [letter1, letter2].forEach(letter => {
+        gsap.to(letter, {
+          duration: 0.5,
+          scale: Math.random() + 0.5,
+          yoyo: true,
+          repeat: 1,
+          onComplete: () => {
+            gsap.to(letter, {
+              duration: 0.5,
+              scale: 1,
+              yoyo: true,
+              repeat: 1
+            });
+          }
+        });
+      });
       document.querySelector('#cursor').style.display= 'block'
       tl.resume()
     })
@@ -430,6 +472,26 @@
     })
 
     document.querySelector('.keyword-sub:nth-of-type(3)').addEventListener('mouseenter', () => {
+      const randomIndex1 = Math.floor(Math.random() * firstKeyword.length);
+      const randomIndex2 = Math.floor(Math.random() * firstKeyword.length);
+      const letter1 = document.querySelector('.keyword-sub:nth-of-type(3) span:nth-of-type(' + randomIndex1 + ') .after');
+      const letter2 = document.querySelector('.keyword-sub:nth-of-type(3) span:nth-of-type(' + randomIndex2 + ') .after');
+      gsap.from(letter1, {
+        duration: 0.5,
+        yPercent: -100,
+        repeat: 1,
+        onComplete: () => {
+          letter1.setAttribute('style', 'transform: translateY(-100%)')
+        }
+      })
+      gsap.from(letter2, {
+        duration: 0.5,
+        yPercent: -100,
+        repeat: 1,
+        onComplete: () => {
+          letter2.setAttribute('style', 'transform: translateY(-100%)')
+        }
+      })
       document.querySelector('#cursor').style.display= 'block'
       tl.resume()
     })
