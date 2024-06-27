@@ -2,6 +2,23 @@
     --main-font: "Inter", sans-serif;
 }
 
+/* CURSOR */
+#cursor {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    /* border: 1px solid white; */
+    border-radius: 50%;
+    /* background: white; */
+    mix-blend-mode: difference;
+    pointer-events: none;
+    transform: translate(-250%, -250%);
+    z-index: 9999;
+    transition: all 0.1s;
+    transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    display: none;
+}
+
 html {
     font-size: 62.5%;
     color: black;
@@ -22,6 +39,10 @@ body, html {
     overflow-x : hidden;
     overflow-y: auto;
 }
+
+/* ===========================
+====== HERO SECTION ======
+============================*/
 
 .hero {
     height: 100vh;
@@ -66,19 +87,6 @@ p.hero-subhead {
     font-size: 2.2rem;
 }
 
-.hero-sub-section {
-    height: 50vh;
-    min-height: 450px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    background-color: #fff;
-    svg {
-        height: 100%;
-    }
-}
-
 .section-heading {
     font-size: 6rem;
     text-align: center;
@@ -119,6 +127,90 @@ p.hero-subhead {
         font-family: sans-serif;
         font-size: 20rem;
         color: white;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-keywords {
+        flex-direction: column;
+        gap: 1.5rem;
+        margin-top: 2rem;
+        font-size: 1.5rem;
+    }
+
+    .hero-heading {
+        font-size: 3.25rem;
+        gap: 2rem;
+    }
+}
+
+/* ===========================
+====== HERO SUB SECTION ======
+============================*/
+
+.hero-sub-section {
+    height: 100vh;
+    min-height: 850px;
+    background-color: black;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.col1 {
+    width: 10%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15rem;
+    .item-sub {
+        transform: rotate(-90deg) translateY(-100%);
+    }
+}
+
+.col2 {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .keyword-sub {
+        font-size: 6rem;
+        font-family: var(--main-font);
+        font-weight: 400;
+        display: flex;
+        flex-direction: row;
+        overflow: hidden;
+    }
+}
+
+@media (max-width: 850px) {
+    .hero-sub-section {
+        flex-direction: column;
+    }
+
+    .col1 {
+        width: 100%;
+        height: 10%;
+        display: flex;
+        flex-direction: row;
+        gap: 10rem;
+        .item-sub {
+            transform: rotate(0deg) translateY(0%);
+        }
+    }
+
+    .col2 {
+        width: 100%;
+        height: 80%;
+        .keyword-sub {
+            font-size: 4rem;
+        }
     }
 }
 
@@ -232,22 +324,9 @@ p.hero-subhead {
     }
 }
 
-@media (max-width: 768px) {
-    .hero-keywords {
-        flex-direction: column;
-        gap: 1.5rem;
-        margin-top: 2rem;
-        font-size: 1.5rem;
-    }
-
-    .hero-heading {
-        font-size: 3.25rem;
-        gap: 2rem;
-    }
-
-}
-
-/* WHAT WE OFFER */
+/* ===========================
+=== SECTION2: WHAT WE OFFER === 
+============================*/
 
 .section2 {
     display: flex;
@@ -346,6 +425,11 @@ p.hero-subhead {
     }
 }
 
+
+/* ===========================
+=== SECTION3: PLAYGROUND ===
+============================*/
+
 .section3 {
     height: 100vh;
     min-height: 400px;
@@ -431,77 +515,6 @@ p.hero-subhead {
 * ==== SECTION 4: CONTACT =====
 * ============================*/
 
-.section4 {
-    height: 100vh;
-    min-height: 700px;
-    display: flex;
-    flex-direction: column;
-    gap: 100px;
-    align-items: center;
-    justify-content: center;
-}
-
-.heading-contact {
-    font-size: 4rem;
-    font-weight: 700;
-    position: relative;
-    text-align: center;
-    font-family: var(--main-font);
-}
-
-.socials-btn {
-    position: relative;
-    width: 150px;
-    height: 30px;
-    background-color: white;
-    border-top: none;
-    border-right: none;
-    border-left: none;
-    border-bottom: 1px solid black;
-    cursor: pointer;
-}
-
-.socials-link {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    background-color: white;
-    width: 8rem;
-    align-items: center;
-    
-    .expandable-section {
-        display: none;
-        padding: 10px;
-        /* width: 200px; */
-        margin: 0 auto;
-        list-style: none;
-        transform: translateY(-100%);
-        transition: transform 0.3s ease-in-out;
-    }
-    .expandable-section[data-visible="true"] {
-        display: block;
-        transform: translateY(0);
-        transition: transform 0.3s ease-in-out;
-    }
-    li a {
-        text-decoration: none;
-        color: black;
-        font-size: 1rem;
-        transition: color 0.3s;
-        text-align: center;
-    }
-    .arrow {
-        position: absolute;
-        top: 50%;
-        right: 10px;
-        transform: translateY(-50%) rotate(-90deg);
-        transition: transform 0.3s ease-in-out;
-    }
-    .arrow[aria-expanded="true"] {
-        transform: translateY(-50%) rotate(0deg);
-        transition: transform 0.3s ease-in-out;
-    }
-}
 
 /** ==============
 * ==== FOOTER ====

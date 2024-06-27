@@ -12,6 +12,17 @@
 </head>
 
 <body data-barba="wrapper">
+  <div id="cursor">
+    <svg width="100" height="100" viewBox="0 0 100 100">
+  <defs>
+    <path id="circlePath" d="M 50, 50 m -40, 0 a 40,40 0 1,0 80,0 a 40,40 0 1,0 -80,0" />
+  </defs>
+  <text fill="white">
+    <textPath xlink:href="#circlePath" startOffset="0%">
+      &nbsp;Gherve&nbsp;&nbsp;Gherve&nbsp;&nbsp;Gherve&nbsp;&nbsp;&nbsp;&nbsp;Gherve&nbsp;&nbsp;Gherve&nbsp;&nbsp;Gherve&nbsp;Gherve
+    </textPath>
+  </text>
+</svg></div>
   <main data-barba="container" data-barba-namespace="home">
     <nav class="navbar" aria-expanded="false">
       <button aria-expanded="false" class="mobile-nav-toggle">&#9776</button>
@@ -61,6 +72,62 @@
       </section>
 
     <section class="hero-sub-section">
+      <div class="col1">
+        <div class="item-sub">GHERVE.DEV</div>
+        <div class="item-sub">GHERVE.DEV</div>
+        <div class="item-sub">GHERVE.DEV</div>
+        <div class="item-sub">GHERVE.DEV</div>
+        <div class="item-sub">GHERVE.DEV</div>
+      </div>
+      <div class="col2">
+        <h1 class="keyword-sub">
+          <span>E</span>
+          <span>x</span>
+          <span>p</span>
+          <span>r</span>
+          <span>e</span>
+          <span>s</span>
+          <span>s</span>
+          <span>i</span>
+          <span>v</span>
+          <span>e</span>
+        </h1>
+        <h1 class="keyword-sub">
+          <span>T</span>
+          <span>r</span>
+          <span>a</span>
+          <span>n</span>
+          <span>s</span>
+          <span>f</span>
+          <span>o</span>
+          <span>r</span>
+          <span>m</span>
+          <span>a</span>
+          <span>t</span>
+          <span>i</span>
+          <span>v</span>
+          <span>e</span>
+        </h1>
+        <h1 class="keyword-sub">
+          <span>I</span>
+          <span>n</span>
+          <span>n</span>
+          <span>o</span>
+          <span>v</span>
+          <span>a</span>
+          <span>t</span>
+          <span>i</span>
+          <span>v</span>
+          <span>e</span>
+        </h1>
+      </div>
+      <div class="col1">
+        <div class="item-sub">GHERVE.DEV</div>
+        <div class="item-sub">GHERVE.DEV</div>
+        <div class="item-sub">GHERVE.DEV</div>
+        <div class="item-sub">GHERVE.DEV</div>
+        <div class="item-sub">GHERVE.DEV</div>
+      </div>
     </section>
 
     <section class="section2">
@@ -85,20 +152,6 @@
     <section class="section3">
       <div class="heading-playground">Check out some sample User Interactive elements!</div>
       <button class="playground-button" onclick="window.location.href='playground.html'">Playground</button>
-    </section>
-
-    <section class="section4">
-      <h1 class="heading-contact">Contact Us</h1>
-      <div class="socials-link">
-        <button class="socials-btn" onclick="toggleSection()">Socials
-          <div class="arrow" aria-expanded="false">▼</div>
-        </button>
-        <ul class="expandable-section" data-visible="false">
-          <li> <a href="">LinkedIn</a></li>
-          <li> <a href="">Github</a></li>
-          <li> <a href="">Instagram</a></li>
-        </ul>
-      </div>
     </section>
 
     <footer>
@@ -129,6 +182,20 @@
 <script>
     gsap.registerPlugin(ScrollTrigger);
     gsap.registerPlugin(Flip)
+
+    //cursor:
+    let cursor = document.querySelector('#cursor');
+    const onMouseMove = (event) => {
+      cursor.style.left = (event.pageX) + "px";
+      cursor.style.top = (event.pageY) + "px";
+      // if (event.target.hasAttribute("cursor-type")) {
+      //   let cursorSize = event.target.getAttribute("cursor-type");
+      //   cursor.classList.add(cursorSize);
+      // } else {
+      //   cursor.classList = "";
+      // }
+    };
+    document.addEventListener("mousemove", onMouseMove);
 
     var heroSubSection = document.querySelector('.hero-sub-section');
     const heroSSHeight= heroSubSection.offsetHeight;
@@ -240,7 +307,7 @@
     })
 
     // playground section
-    if (window.innerWidth < 850) {
+    if (window.innerWidth > 850) {
       gsap.to('.section3', {
         scrollTrigger: {
           trigger: '.section3',
@@ -248,11 +315,91 @@
           end: '80% bottom',
           scrub: 1,
           once: true,
-          // markers: true
         },
         backgroundColor: 'black',
         transform: 'translateX(0)'
       })
     }
+
+    //hero sub section
+    const firstKeyword= document.querySelectorAll('.keyword-sub:nth-of-type(1) span');
+    const secondKeyword= document.querySelector('.keyword-sub:nth-of-type(2)');
+    const thirdKeyword= document.querySelector('.keyword-sub:nth-of-type(3)');
+
+    gsap.from(firstKeyword, {
+      scrollTrigger: {
+        trigger: firstKeyword,
+        start: "top center",
+        once: true,
+      },
+      yPercent: function(index) {
+        return index % 2 === 0 ? 100 : -100;
+      },
+      duration: 1,
+      stagger: 0.1,
+      // repeat: -1,
+    });
+
+    let tl = gsap.to("#cursor svg", {
+      duration: 10,
+      rotate: 360,
+      repeat: -1,
+      ease: "linear",
+      transformOrigin: "center center"
+    });
+    document.querySelector('.keyword-sub:nth-of-type(1)').addEventListener('mouseenter', () => {
+      const randomIndex1 = Math.floor(Math.random() * firstKeyword.length);
+      const randomIndex2 = Math.floor(Math.random() * firstKeyword.length);
+      const letter1 = document.querySelector('.keyword-sub:nth-of-type(1) span:nth-of-type(' + randomIndex1 + ')');
+      const letter2 = document.querySelector('.keyword-sub:nth-of-type(1) span:nth-of-type(' + randomIndex2 + ')');
+      gsap.to(letter1, {
+        duration: 0.5,
+        scaleX: -1,
+        yoyo: true,
+        onComplete: () => {
+          gsap.to(letter1, {
+            duration: 0.5,
+            scaleX: 1,
+            yoyo: true,
+          })
+        }
+      })
+      gsap.to(letter2, {
+        duration: 0.5,
+        scaleX: -1,
+        yoyo: true,
+        onComplete: () => {
+          gsap.to(letter2, {
+            duration: 0.5,
+            scaleX: 1,
+            yoyo: true,
+          })
+        }
+      })
+      document.querySelector('#cursor').style.display= 'block'
+      tl.resume()
+    })
+    document.querySelector('.keyword-sub:nth-of-type(1)').addEventListener('mouseleave', () => {
+      tl.pause()
+      document.querySelector('#cursor').style.display= 'none'
+    })
+
+    document.querySelector('.keyword-sub:nth-of-type(2)').addEventListener('mouseenter', () => {
+      document.querySelector('#cursor').style.display= 'block'
+      tl.resume()
+    })
+    document.querySelector('.keyword-sub:nth-of-type(2)').addEventListener('mouseleave', () => {
+      tl.pause()
+      document.querySelector('#cursor').style.display= 'none'
+    })
+
+    document.querySelector('.keyword-sub:nth-of-type(3)').addEventListener('mouseenter', () => {
+      document.querySelector('#cursor').style.display= 'block'
+      tl.resume()
+    })
+    document.querySelector('.keyword-sub:nth-of-type(3)').addEventListener('mouseleave', () => {
+      tl.pause()
+      document.querySelector('#cursor').style.display= 'none'
+    })
 
 </script>
