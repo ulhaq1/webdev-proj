@@ -100,8 +100,6 @@ p.hero-subhead {
     font-weight: 400;
 }
 
-
-
 .keyword-carousel {
     overflow: hidden;
     white-space: nowrap;
@@ -249,8 +247,6 @@ p.hero-subhead {
 
 }
 
-
-
 /* WHAT WE OFFER */
 
 .section2 {
@@ -358,7 +354,7 @@ p.hero-subhead {
     justify-content: center;
     align-items: center;
     gap: 5rem;
-    background: white;
+    background-color: white;
     transform: translateX(-100%);
 }
 
@@ -422,6 +418,13 @@ p.hero-subhead {
 
 .playground-button:hover::before {
     transform: translateX(-20%) scale(4) rotate(30deg) ;
+}
+
+@media (max-width: 850px) {
+    .section3 {
+        transform: translateX(0);
+        background-color: black;
+    }
 }
 
 /** ==========================
