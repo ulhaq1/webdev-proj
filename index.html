@@ -362,41 +362,43 @@
     const secondKeyword= document.querySelectorAll('.keyword-sub:nth-of-type(2) span');
     const thirdKeyword= document.querySelector('.keyword-sub:nth-of-type(3)');
 
-    gsap.from(firstKeyword, {
-      scrollTrigger: {
-        trigger: firstKeyword,
-        start: "top center",
-        once: true,
-      },
-      yPercent: function(index) {
-        return index % 2 === 0 ? 100 : -100;
-      },
-      duration: 1,
-      stagger: 0.1,
-      // repeat: -1,
-    });
-    gsap.utils.toArray(secondKeyword).forEach(letter => {
-      gsap.from(letter, {
+    if (window.innerWidth>850) {
+      gsap.from(firstKeyword, {
         scrollTrigger: {
           trigger: firstKeyword,
           start: "top center",
           once: true,
         },
-        scale: Math.random() * 1,
+        yPercent: function(index) {
+          return index % 2 === 0 ? 100 : -100;
+        },
         duration: 1,
+        stagger: 0.1,
+        // repeat: -1,
       });
-    });
-    gsap.to('.keyword-sub:nth-of-type(3) span .after', {
-      scrollTrigger: {
-        trigger: firstKeyword,
-        start: "top center",
-        once: true,
-      },
-      yPercent: 100,
-      duration: 1,
-      stagger: 0.1,
-      // repeat: -1,
-    });
+      gsap.utils.toArray(secondKeyword).forEach(letter => {
+        gsap.from(letter, {
+          scrollTrigger: {
+            trigger: firstKeyword,
+            start: "top center",
+            once: true,
+          },
+          scale: Math.random() * 1,
+          duration: 1,
+        });
+      });
+      gsap.to('.keyword-sub:nth-of-type(3) span .after', {
+        scrollTrigger: {
+          trigger: firstKeyword,
+          start: "top center",
+          once: true,
+        },
+        yPercent: 100,
+        duration: 1,
+        stagger: 0.1,
+        // repeat: -1,
+      });
+    }
 
     let tl = gsap.to("#cursor svg", {
       duration: 10,

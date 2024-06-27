@@ -29,7 +29,6 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    position: fixed;
 }
 
 body, html {
@@ -226,6 +225,10 @@ p.hero-subhead {
         height: 80%;
         .keyword-sub {
             font-size: 4rem;
+        }
+
+        .keyword-sub:nth-of-type(3) span .after {
+            transform: translateY(100%);
         }
     }
 }
