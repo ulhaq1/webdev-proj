@@ -37,7 +37,7 @@ body, html {
     font-family: var(--main-font);
     margin-top: 1.5em;
     font-weight: 400;
-    font-size: 5em;
+    font-size: 4.2em;
     display: flex;
     flex-direction: row;
     text-align: center;
@@ -99,6 +99,8 @@ p.hero-subhead {
     font-family: var(--main-font);
     font-weight: 400;
 }
+
+
 
 .keyword-carousel {
     overflow: hidden;
@@ -223,13 +225,31 @@ p.hero-subhead {
         width: 100%;
         text-align: center;
         transform: scaleY(1);
+        margin: 1rem 0;
     }
 
     .navbar ul li a {
-        font-size: 6rem;
+        font-size: 5rem;
         transform-origin: center center;
     }
 }
+
+@media (max-width: 768px) {
+    .hero-keywords {
+        flex-direction: column;
+        gap: 1.5rem;
+        margin-top: 2rem;
+        font-size: 1.5rem;
+    }
+
+    .hero-heading {
+        font-size: 3.25rem;
+        gap: 2rem;
+    }
+
+}
+
+
 
 /* WHAT WE OFFER */
 
