@@ -500,12 +500,9 @@ p.hero-subhead {
     margin-top: -1.5rem;
 }
 
-
 .cta-right .cta-subheading, .cta-right .contact-card {
     margin-bottom: 1rem; 
 }
-
-
 
 .cta-right .contact-card {
     display: flex;
@@ -515,9 +512,6 @@ p.hero-subhead {
     margin-bottom: 1rem;
     margin-top: 2rem;
 }
-
-
-  
 
 .cta-heading {
     font-size: 8rem; 
@@ -533,7 +527,6 @@ p.hero-subhead {
     font-family: var(--main-font);
 }
 
-  
 .contact-card {
     font-size: 1.75rem;
     display: flex;
