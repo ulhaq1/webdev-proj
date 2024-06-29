@@ -445,6 +445,96 @@ p.hero-subhead {
     }
 }
 
+
+
+/** ==========================
+* ==== SECTION 3: PLAYGROUND =====
+* ============================*/
+
+.section3 {
+    min-height: 600px;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5rem;
+    background-color: white;
+    transform: translateX(-100%);
+    margin-bottom: 0;
+}
+
+.heading-playground {
+    font-size: 4rem;
+    font-weight: bold;
+    position: relative;
+    padding: 0 100px;
+    text-align: center;
+}
+
+.playground-button {
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    transition: background-color 0.3s ease-in;
+}
+
+.playground-button::after {
+    content: "";
+    position: absolute;
+    right: -20px; /* Adjust based on the size of the triangle */
+    top: 50%;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 10px 0 10px 20px;
+    border-color: transparent transparent transparent black;
+    transform: translateY(-50%) translateX(200%) scale(4) rotate(70deg);
+    transition: transform 0.3s ease;
+}
+
+.playground-button::before {
+    content: "";
+    position: absolute;
+    left: -20px; /* Adjust based on the size of the triangle */
+    top: 50%;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 10px 0 10px 20px;
+    border-color: transparent transparent transparent black;
+    transform:  translateX(-100%) scale(4) rotate(50deg);
+    transition: transform 0.3s ease;
+}
+
+.playground-button:hover {
+    background-color: white;
+    color: black;
+}
+
+.playground-button:hover::after {
+    transform: translateX(-100%) scale(4) rotate(70deg) translateY(-50%);
+}
+
+.playground-button:hover::before {
+    transform: translateX(-20%) scale(4) rotate(30deg) ;
+}
+
+@media (max-width: 850px) {
+    .section3 {
+        transform: translateX(0);
+        background-color: black;
+    }
+}
+
+
 /** ==========================
 * ==== SECTION 4: CONTACT =====
 * ============================*/
@@ -576,93 +666,6 @@ p.hero-subhead {
     }
 
 }}
-
-/** ==========================
-* ==== SECTION 3: PLAYGROUND =====
-* ============================*/
-
-.section3 {
-    min-height: 600px;
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 5rem;
-    background-color: white;
-    transform: translateX(-100%);
-    margin-bottom: 0;
-}
-
-.heading-playground {
-    font-size: 4rem;
-    font-weight: bold;
-    position: relative;
-    padding: 0 100px;
-    text-align: center;
-}
-
-.playground-button {
-    background-color: black;
-    color: white;
-    padding: 10px 20px;
-    font-size: 2rem;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    position: relative;
-    overflow: hidden;
-    text-align: center;
-    transition: background-color 0.3s ease-in;
-}
-
-.playground-button::after {
-    content: "";
-    position: absolute;
-    right: -20px; /* Adjust based on the size of the triangle */
-    top: 50%;
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-width: 10px 0 10px 20px;
-    border-color: transparent transparent transparent black;
-    transform: translateY(-50%) translateX(200%) scale(4) rotate(70deg);
-    transition: transform 0.3s ease;
-}
-
-.playground-button::before {
-    content: "";
-    position: absolute;
-    left: -20px; /* Adjust based on the size of the triangle */
-    top: 50%;
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-width: 10px 0 10px 20px;
-    border-color: transparent transparent transparent black;
-    transform:  translateX(-100%) scale(4) rotate(50deg);
-    transition: transform 0.3s ease;
-}
-
-.playground-button:hover {
-    background-color: white;
-    color: black;
-}
-
-.playground-button:hover::after {
-    transform: translateX(-100%) scale(4) rotate(70deg) translateY(-50%);
-}
-
-.playground-button:hover::before {
-    transform: translateX(-20%) scale(4) rotate(30deg) ;
-}
-
-@media (max-width: 850px) {
-    .section3 {
-        transform: translateX(0);
-        background-color: black;
-    }
-}
 
 /** ==========================
 * ==== SECTION 4: CONTACT =====
