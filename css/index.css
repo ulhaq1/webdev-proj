@@ -513,8 +513,12 @@ p.hero-subhead {
     transform:  translateX(-100%) scale(4) rotate(50deg);
     transition: transform 0.3s ease;
 }
-    
-@media (max-width: 850px) {
+
+p.keynote {
+    display: none;
+}
+
+@media (min-width: 850px) {
     .playground-button:hover {
         background-color: white;
         color: black;
@@ -527,10 +531,20 @@ p.hero-subhead {
     .playground-button:hover::before {
         transform: translateX(-20%) scale(4) rotate(30deg) ;
     }
-    .section3 {
-    transform: translateX(0);
-    background-color: black;
 }
+
+@media (max-width: 850px) {
+    .section3 {
+        transform: translateX(0);
+        background-color: black;
+    }
+}
+
+@media (max-width: 1000px) {
+    p.keynote {
+        display: block;
+        font-size: 1.5rem;
+    }
 }
 
 
