@@ -513,25 +513,24 @@ p.hero-subhead {
     transform:  translateX(-100%) scale(4) rotate(50deg);
     transition: transform 0.3s ease;
 }
-
-.playground-button:hover {
-    background-color: white;
-    color: black;
-}
-
-.playground-button:hover::after {
-    transform: translateX(-100%) scale(4) rotate(70deg) translateY(-50%);
-}
-
-.playground-button:hover::before {
-    transform: translateX(-20%) scale(4) rotate(30deg) ;
-}
-
+    
 @media (max-width: 850px) {
-    .section3 {
-        transform: translateX(0);
-        background-color: black;
+    .playground-button:hover {
+        background-color: white;
+        color: black;
     }
+    
+    .playground-button:hover::after {
+        transform: translateX(-100%) scale(4) rotate(70deg) translateY(-50%);
+    }
+    
+    .playground-button:hover::before {
+        transform: translateX(-20%) scale(4) rotate(30deg) ;
+    }
+    .section3 {
+    transform: translateX(0);
+    background-color: black;
+}
 }
 
 
