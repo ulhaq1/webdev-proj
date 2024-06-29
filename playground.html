@@ -56,6 +56,7 @@
 </html>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollToPlugin.min.js"></script>
 
 <script>
     window.onload = function() {
@@ -196,9 +197,9 @@
                     })
                     },
                     onComplete: () => {
-                    setTimeout(() => {
-                        pacmanNeu.style.transform = ''; // Reset the transform property
-                    }, 1000);
+                        setTimeout(() => {
+                            gsap.set(pacmanNeu, {clearProps: "transform"}); // Use GSAP to reset transform
+                        }, 1000);
                     }
                 })
             });
@@ -447,8 +448,9 @@
         
         setTimeout(() => {
             if (window.innerWidth > 1100)
-            container.scrollTo(contentWidth*1.2, contentHeight*1.2);
-        }, 1000)
+            gsap.to(container, {duration: 0.5, scrollTo: {x: contentWidth*1.2, y: contentHeight*1.2}, ease: 'power1.inOut'})
+            // container.scrollTo(contentWidth*1.2, contentHeight*1.2);
+        }, 500)
     
         container.addEventListener('wheel', (event) => {
             event.preventDefault();
