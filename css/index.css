@@ -1,6 +1,7 @@
 :root {
     --main-font: "Inter", sans-serif;
     --bold-font: "Roboto", sans-serif;
+    --minimalist-font: "Montserrat", sans-serif; 
 }
 
 /* CURSOR */
@@ -449,35 +450,75 @@ p.hero-subhead {
 * ============================*/
 
 .contact {
-    height: 50vh;
+    font-family: var(--bold-font);
+    min-height: 70vh; /* Increase the height to provide more space */
     color: white;
     padding: 20px;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 3em;
 }
-  
+
+.reachout-heading {
+    font-family: var(--minimalist-font);
+    font-size: 8rem;
+    font-weight: 900;
+    text-align: center;
+    margin-bottom: 1.5em; 
+    margin-top: 0;
+    text-transform: uppercase;
+}
+
 .cta-content {
     display: flex;
     width: 100%;
     max-width: 1200px;
-    margin: 0 auto;
-    justify-content: space-between;
+    justify-content: space-between; 
 }
-  
+
 .cta-left {
     flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: flex-start;
 }
-  
+
+.cta-left h1 {
+    margin-bottom: 1rem; 
+}
+
 .cta-right {
     flex: 1;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
+    align-items: ce;
+    justify-content: flex-start;
+    margin-top: -1.5rem;
 }
+
+
+.cta-right .cta-subheading, .cta-right .contact-card {
+    margin-bottom: 1rem; 
+}
+
+
+
+.cta-right .contact-card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    margin-top: 2rem;
+}
+
+
   
+
 .cta-heading {
     font-size: 8rem; 
     font-family: var(--main-font);
@@ -488,17 +529,16 @@ p.hero-subhead {
 }
   
 .cta-subheading {
-    font-size: 2rem;
+    font-size: 2.75rem;
     font-family: var(--main-font);
-    margin-bottom: 1rem;
 }
+
   
 .contact-card {
-    font-size: 1.5rem;
+    font-size: 1.75rem;
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 1rem;
 }
 
 .contact-icon {
@@ -508,6 +548,41 @@ p.hero-subhead {
 .cta-reachout {
     font-size: 6rem;
 }
+
+
+
+@media (max-width: 768px) {
+    .cta-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .cta-left, .cta-right {
+        align-items: center;
+    }
+
+    .cta-left h1 {
+        font-size: 4rem;
+        text-align: center;
+        margin-bottom: 2rem; 
+
+    .cta-subheading {
+        font-size: 2rem;
+        margin-top: 0;
+    }
+
+    .contact-card {
+        font-size: 1.5rem;
+        flex-direction: column;
+    }
+
+    .contact-icon {
+        height: 25px;
+        margin-bottom: 0.5rem;
+    }
+
+}}
 
 /** ==========================
 * ==== SECTION 3: PLAYGROUND =====
@@ -524,6 +599,7 @@ p.hero-subhead {
     gap: 5rem;
     background-color: white;
     transform: translateX(-100%);
+    margin-bottom: 0;
 }
 
 .heading-playground {
