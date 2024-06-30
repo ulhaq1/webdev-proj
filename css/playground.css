@@ -341,10 +341,10 @@ html, body {
     visibility: hidden;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
     .container-mobile {
         visibility: visible;
-        padding-top: 50px;
+        padding-top: 70px;
         padding-bottom: 20px;
         display: flex;
         justify-content: center;
@@ -372,7 +372,7 @@ html, body {
     color: white; 
 }
 
-@media (max-width: 768px) {
+@media (max-width: 760px) {
     .home-button {
         position: absolute;
         top: 10px;
