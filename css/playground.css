@@ -341,6 +341,20 @@ html, body {
     visibility: hidden;
 }
 
+@media (max-width: 768px) {
+    .container-mobile {
+        visibility: visible;
+        padding-top: 50px;
+        padding-bottom: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: calc(100vh - 70px); 
+        overflow-y: auto; 
+        box-sizing: border-box; 
+    }
+}
+
 .home-button {
     position: absolute;
     top: 50px;
@@ -351,12 +365,33 @@ html, body {
     font-size: 1rem;
     cursor: pointer;
     border: 1px solid white; 
-    a {
-        text-decoration: none;
-        color: white; 
-    }
 }
 
+.home-button a {
+    text-decoration: none;
+    color: white; 
+}
+
+@media (max-width: 768px) {
+    .home-button {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 40px; 
+        height: 100px; 
+        padding: 0; 
+        transform: none;
+        transform-origin: top right; 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .home-button a {
+        writing-mode: vertical-rl; 
+        text-orientation: mixed; 
+    }   
+}
 
 .circular-border {
     position: absolute;
