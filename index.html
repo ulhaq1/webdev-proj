@@ -165,7 +165,6 @@
         </div>
     </section>
 
-
     <section class="contact">
       <h1 class="cta-reachout reachout-heading">Reach out now!</h1>
       <div class="cta-content">
@@ -269,6 +268,7 @@
         const visibility = primary_nav.getAttribute('data-visible');
         
         if (visibility === "false") {
+            primary_nav.style.display = "block";
             primary_nav.setAttribute('data-visible', "true");
             nav_toggle.setAttribute('aria-expanded', "true");
             navParent.setAttribute('aria-expanded', "true");

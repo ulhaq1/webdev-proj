@@ -30,7 +30,6 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    overflow: hidden;
 }
 
 body, html {
@@ -246,7 +245,7 @@ p.hero-subhead {
     z-index: 1000;
     transform: translateY(0);
     transition: transform 0.3s ease-in-out;
-    /* overflow: hidden; */
+    /* overflow-x: hidden; */
 
     ul {
         display: flex;
@@ -300,7 +299,7 @@ p.hero-subhead {
 @media (max-width: 850px) {
     .mobile-nav-toggle {
         display: block;
-        z-index: 9999;
+        z-index: 99999;
         aspect-ratio: 1;
     }
 
@@ -326,6 +325,7 @@ p.hero-subhead {
         justify-content: flex-start;
         align-items: center;
         transition: transform 350ms ease-out;
+        display: none;
     }
 
     .navbar ul[data-visible="true"] {
