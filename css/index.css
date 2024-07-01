@@ -377,8 +377,8 @@ p.hero-subhead {
     letter-spacing: 2px;
     width: 100%;
     padding-bottom: 20px;
-    font-family: var(--main-font);
-    font-weight: 900;
+    font-family: var(--minimalist-font);
+    font-weight: 500;
 }
 
 .offer-container {
@@ -404,16 +404,17 @@ p.hero-subhead {
     height: 100px;
     align-items: center;
     display: flex;
-    font-family: var(--main-font);
+    font-family: var(--minimalist-font);
     font-weight: 400;
     width: 80%;
     margin: 0 auto;
     flex-direction: row;
     h1, p {
         position: absolute;
+        font-weight: 400;
     }
     p {
-        font-size: 1.5rem;
+        font-size: 2rem;
         transform: translateX(100vw);
     }
 }
@@ -554,7 +555,6 @@ p.keynote {
 * ============================*/
 
 .contact {
-    font-family: var(--bold-font);
     min-height: 70vh; /* Increase the height to provide more space */
     color: white;
     padding: 20px;
