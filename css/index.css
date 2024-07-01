@@ -617,7 +617,7 @@ h1.cta-reachout {
 }
 
 .cta-heading {
-    font-size: 8rem; 
+    font-size: 10rem; 
     font-family: var(--main-font);
     font-weight: 900; 
     margin: 0;
@@ -625,9 +625,10 @@ h1.cta-reachout {
     margin-bottom: 2rem;
 }
   
-.cta-subheading {
-    font-size: 2.75rem;
-    font-family: var(--main-font);
+p.cta-subheading {
+    font-size: 5rem;
+    font-family: var(--minimalist-font);
+    font-weight: 500;
 }
 
 .contact-card {
