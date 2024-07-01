@@ -153,7 +153,6 @@
       <p class="keynote">Open the page linked on a Desktop for the best experience</p>
     </section>
 
-
     <section class="latest-projects">
       <div class="projects-container">
         <div class="project-text">
@@ -199,7 +198,6 @@
       </div>
     </section>
 
-
     <footer>
       <div class="footer-content">
         <div class="footer-logo">
@@ -213,10 +211,10 @@
         </div>
         <div class="footer-socials">
           <a href="https://www.linkedin.com/in/gherve.dev" target="_blank">
-            <img src="images/linkedin.png" alt="LinkedIn Icon" class="contact-icon"> linkedin
+            <img src="images/linkedin.png" alt="LinkedIn Icon" class="contact-icon"> <span>linkedin</span>
           </a>
           <a href="https://www.github.com/gherve.dev" target="_blank">
-            <img src="images/github.png" alt="GitHub Icon" class="contact-icon"> github
+            <img src="images/github.png" alt="GitHub Icon" class="contact-icon"> <span>github</span>
           </a>
         </div>
       </div>
@@ -230,6 +228,15 @@
 
 <script>
     gsap.registerPlugin(ScrollTrigger);
+
+    if (window.innerWidth < 768) {
+      document.querySelectorAll('.footer-socials a').forEach(link => {
+        const span = link.querySelector('span');
+        if (span) {
+          span.remove();
+        }
+      });
+    }
 
     //cursor:
     let cursor = document.querySelector('#cursor');
@@ -509,4 +516,20 @@
       document.querySelector('#cursor').style.display= 'none'
     })
     }
+
+    window.addEventListener('resize', () => {
+      if (window.innerWidth < 850) {
+        document.querySelector('#cursor').style.display= 'none'
+        tl.pause()
+      }
+
+      if (window.innerWidth < 768) {
+        document.querySelectorAll('.footer-socials a').forEach(link => {
+          const span = link.querySelector('span');
+          if (span) {
+            span.remove();
+          }
+        });
+      }
+    })
 </script>

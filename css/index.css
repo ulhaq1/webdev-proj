@@ -1002,17 +1002,6 @@ footer .footer-content {
 }
 
 @media (max-width: 768px) {
-    footer .footer-content {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: flex-start;
-        text-align: left;
-        gap: 2rem;
-        width: 100%;
-        padding: 1rem;
-        box-sizing: border-box;
-    }
-
     footer .footer-logo {
         flex: 1;
         align-items: flex-start;
@@ -1043,10 +1032,6 @@ footer .footer-content {
         height: 16px;
     }
 }
-
-
-
-
 
 @media (max-width: 1100px) {
     .offer-item {
