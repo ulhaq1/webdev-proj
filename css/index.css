@@ -76,6 +76,15 @@ body, html {
     display: inline-block;
     font-weight: 400;
     /* visibility: hidden; */
+    overflow: hidden;
+}
+
+.gherve.secondary {
+    overflow: hidden;
+}
+
+h1.gherve span {
+    display: block;
 }
 
 .headings {
@@ -563,16 +572,6 @@ p.keynote {
     align-items: center;
     justify-content: flex-start;
     margin-bottom: 3em;
-}
-
-h1.cta-reachout {
-    font-family: var(--minimalist-font);
-    font-size: 8rem;
-    font-weight: 400;
-    text-align: center;
-    margin-bottom: 1.5em;
-    margin-top: 0;
-    text-transform: uppercase;
 }
 
 .cta-content {

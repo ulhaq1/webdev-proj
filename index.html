@@ -42,11 +42,11 @@
           <div class="headings">
             <div class="hero-heading">
               <h1 class="gherve">G</h1>
-              <h1 class="gherve">H</h1>
-              <h1 class="gherve">E</h1>
-              <h1 class="gherve">R</h1>
-              <h1 class="gherve">V</h1>
-              <h1 class="gherve">E</h1>
+              <h1 class="gherve secondary"><span>H</span></h1>
+              <h1 class="gherve secondary"><span>E</span></h1>
+              <h1 class="gherve secondary"><span>R</span></h1>
+              <h1 class="gherve secondary"><span>V</span></h1>
+              <h1 class="gherve secondary"><span>E</span></h1>
             </div>
             <!-- <p class="hero-subhead">Your vision, our expertise. Expert web design tailored to your needs.</p> -->
             <div class="hero-keywords">
@@ -166,8 +166,7 @@
     </section>
 
     <section class="contact">
-<!--       <h1 class="cta-reachout reachout-heading">get in touch!</h1>
- -->      <div class="cta-content">
+       <div class="cta-content">
         <div class="cta-left">
           <h1 class="cta-heading">we</h1>
           <h1 class="cta-heading">code</h1>
@@ -228,6 +227,7 @@
 <script>
     gsap.registerPlugin(ScrollTrigger);
 
+    //footer socials
     if (window.innerWidth < 768) {
       document.querySelectorAll('.footer-socials a').forEach(link => {
         const span = link.querySelector('span');
@@ -236,6 +236,35 @@
         }
       });
     }
+
+    //gherve text animation
+    const gherve = document.querySelectorAll('.gherve.secondary span');
+    const g = document.querySelector('.gherve:nth-of-type(1)');
+    gherve.forEach((letter, index) => {
+      gsap.set(letter, {
+        xPercent: -100 * (index+1)*2,
+        scale: 0.5
+      })
+    })
+    gsap.set(g, {
+      xPercent: 100* (gherve.length+3)/2,
+      scale: 1.5, 
+    })
+    let heroTl = gsap.timeline();
+    heroTl.to(g, {
+      delay :0.5,
+      xPercent: 0,
+      duration: 1,
+    }).to(gherve, {
+      xPercent: 0,
+      duration: 1,
+    }, '-=1').to(g, {
+      scale: 1,
+      duration: 1,
+    }).to(gherve, {
+      scale: 1,
+      duration: 1,
+    }, '-=1')
 
     //cursor:
     let cursor = document.querySelector('#cursor');
