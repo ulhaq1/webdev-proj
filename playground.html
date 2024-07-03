@@ -452,39 +452,104 @@
             // container.scrollTo(contentWidth*1.2, contentHeight*1.2);
         }, 500)
     
+        // Assuming xk, yk, contentWidth, contentHeight, and content are already defined
+        
         container.addEventListener('wheel', (event) => {
             event.preventDefault();
             if (window.innerWidth < 1100) {
                 return;
             }
-    
+        
+            let deltaX = event.deltaX;
+            let deltaY = event.deltaY;
+        
+            applyMovement(deltaX, deltaY);
+        });
+        
+        let startX = 0;
+        let startY = 0;
+        let isDragging = false;
+        
+        // Touch start
+        container.addEventListener('touchstart', (event) => {
+            startX = event.touches[0].pageX;
+            startY = event.touches[0].pageY;
+        }, { passive: true });
+        
+        // Touch move
+        container.addEventListener('touchmove', (event) => {
+            event.preventDefault();
+            if (window.innerWidth < 1100) {
+                return;
+            }
+        
+            let deltaX = startX - event.touches[0].pageX;
+            let deltaY = startY - event.touches[0].pageY;
+        
+            // Update start position for next move
+            startX = event.touches[0].pageX;
+            startY = event.touches[0].pageY;
+        
+            applyMovement(deltaX, deltaY);
+        }, { passive: false });
+        
+        // Mouse down
+        container.addEventListener('mousedown', (event) => {
+            event.preventDefault();
+            isDragging = true;
+            startX = event.pageX;
+            startY = event.pageY;
+        });
+        
+        // Mouse move
+        document.addEventListener('mousemove', (event) => {
+            if (!isDragging || window.innerWidth < 1100) {
+                return;
+            }
+        
+            const sens = 1.5
+            let deltaX = (startX - event.pageX)* sens;
+            let deltaY = (startY - event.pageY)* sens;
+        
+            // Update start position for next move
+            startX = event.pageX;
+            startY = event.pageY;
+        
+            applyMovement(deltaX, deltaY);
+        });
+        
+        // Mouse up
+        document.addEventListener('mouseup', () => {
+            isDragging = false;
+        });
+        
+        function applyMovement(deltaX, deltaY) {
             // Adjust the speed as needed
             const speed = 0.5;
-    
-            xk -= event.deltaX * speed;
-            yk -= event.deltaY * speed;
-    
+        
+            xk -= deltaX * speed;
+            yk -= deltaY * speed;
+        
             content.forEach(con => {
                 gsap.set(con, {
                     x: xk % contentWidth,
                     y: yk % contentHeight,
                 });
             });
-    
+        
             checkBounds();
-        });
-    
+        }
+        
         function checkBounds() {
             if (xk <= -contentWidth) xk = 0;
             if (xk >= contentWidth) xk = 0;
             if (yk <= -contentHeight) yk = 0;
             if (yk >= contentHeight) yk = 0;
         }
-    
+        
         window.addEventListener('resize', () => {
             contentWidth = content[0].offsetWidth;
             contentHeight = content[0].offsetHeight;
         });
-
-    }, 7000)
+    }, 500)
 </script>
