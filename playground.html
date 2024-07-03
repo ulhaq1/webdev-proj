@@ -7,6 +7,9 @@
     <title>Playground</title>
 </head>
 <body>
+    <svg class="circle" height="100" width="100" style="z-index: 99999;">
+        <circle cx="50" cy="50" r="40" fill="white" />
+    </svg>
     <div class="wrapper" >
         <div class="main-text">
             <div class="heading heading1">
@@ -28,9 +31,6 @@
         </div>
     </div>
     
-    <svg class="circle" height="100" width="100">
-        <circle cx="50" cy="50" r="40" fill="white" />
-    </svg>
     <div class="infinite-scroll-container"></div>
     <div class="container-mobile">
         <div class="item item1">1</div>
@@ -64,7 +64,7 @@
             gsap.from(".playground", {duration: 3, y: "-100vh", rotate: 0, stagger: 0.1, ease: "elastic", delay: 0.5,
                 onComplete: () => {
                     gsap.to('.secondary-text', {duration: 1.5, opacity: 1, ease: 'power1.inOut'}, '-=2');
-                    gsap.to('.circle', {duration: 2, scale: 50, ease: 'power1.inOut', onComplete: () => {
+                    gsap.to('.circle', {duration: 2, scale: 80, ease: 'power1.inOut', onComplete: () => {
                         document.querySelector('.wrapper').remove();
                         gsap.to('.circle', {duration: 1, x:'140vw', y: '140vh', scale: 0, ease: 'power1.inOut', onComplete: () => { document.querySelector('.circle').remove(); }})
                     }})

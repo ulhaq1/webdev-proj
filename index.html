@@ -57,15 +57,16 @@
           </div>
           <div class="keyword-carousel">
             <div class="keyword-carousel-inner">
-              <svg id="marquee" style="margin-right: 40px;" xmlns="http://www.w3.org/2000/svg" width="1570" height="200">
+              <!-- <svg id="marquee" style="margin-right: 40px;" xmlns="http://www.w3.org/2000/svg" width="1570" height="200">
                 <text x="0" y="150" stroke="white" class="wort">DEV</text>
                 <text x="470" y="150" stroke="white" class="wort">CODE</text>
                 <text x="1110" y="150" stroke="white" class="wort">WEB</text>
-              </svg>
-              <svg id="marquee" xmlns="http://www.w3.org/2000/svg" width="1570" height="200">
-                <text x="0" y="150" stroke="white" class="wort">DEV</text>
-                <text x="470" y="150" stroke="white" class="wort">CODE</text>
-                <text x="1110" y="150" stroke="white" class="wort">WEB</text>
+              </svg> -->
+              <svg id="marquee" style="margin-right: 40px;" xmlns="http://www.w3.org/2000/svg" width="2450" height="200">
+                <text x="0" y="150" stroke="white" class="wort">HTML</text>
+                <text x="590" y="150" stroke="white" class="wort">CSS</text>
+                <text x="1060" y="150" stroke="white" class="wort">GSAP</text>
+                <text x="1680" y="150" stroke="white" class="wort">SVELTE</text>
               </svg>
             </div>
           </div>
@@ -519,24 +520,8 @@
       document.querySelector('.keyword-sub:nth-of-type(3)').addEventListener('mouseenter', () => {
         const randomIndex1 = Math.floor(Math.random() * firstKeyword.length);
         const randomIndex2 = Math.floor(Math.random() * firstKeyword.length);
-        const letter1 = document.querySelector('.keyword-sub:nth-of-type(3) span:nth-of-type(' + randomIndex1 + ') .after');
-        const letter2 = document.querySelector('.keyword-sub:nth-of-type(3) span:nth-of-type(' + randomIndex2 + ') .after');
-        gsap.from(letter1, {
-          duration: 0.5,
-          yPercent: -100,
-          repeat: 1,
-          onComplete: () => {
-            letter1.setAttribute('style', 'transform: translateY(-100%)')
-          }
-        })
-        gsap.from(letter2, {
-          duration: 0.5,
-          yPercent: -100,
-          repeat: 1,
-          onComplete: () => {
-            letter2.setAttribute('style', 'transform: translateY(-100%)')
-          }
-        })
+        const letter1 = document.querySelector('.keyword-sub:nth-of-type(3) span:nth-of-type(' + randomIndex1 + ')');
+        const letter2 = document.querySelector('.keyword-sub:nth-of-type(3) span:nth-of-type(' + randomIndex2 + ')');
         document.querySelector('#cursor').style.display= 'block'
         tl.resume()
       })
