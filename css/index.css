@@ -390,6 +390,8 @@ p.hero-subhead {
     height: fit-content;
     margin-top: 120px;
     background-color: black;
+    border-bottom: 2px solid white;
+    padding-bottom: 80px;
 }
 
 .whatweoffer {
@@ -503,6 +505,7 @@ p.hero-subhead {
 .heading-playground {
     font-size: 4rem;
     font-weight: bold;
+    font-family: var(--minimalist-font);
     position: relative;
     padding: 0 100px;
     text-align: center;
@@ -587,136 +590,16 @@ p.keynote {
 * ============================*/
 
 .contact {
-    min-height: 70vh; /* Increase the height to provide more space */
-    color: white;
-    padding: 20px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    margin-bottom: 3em;
-}
-
-.cta-content {
-    display: flex;
-    width: 100%;
-    max-width: 1200px;
-    justify-content: space-between; 
-}
-
-.cta-left {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-}
-
-.cta-left h1 {
-    margin-bottom: 1rem; 
-}
-
-.cta-right {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: ce;
-    justify-content: flex-start;
-    margin-top: -1.5rem;
-}
-
-.cta-right .cta-subheading, .cta-right .contact-card {
-    margin-bottom: 1rem; 
-}
-
-.cta-right .contact-card {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 1rem;
-    margin-top: 2rem;
-}
-
-.cta-heading {
-    font-size: 10rem; 
-    font-family: var(--main-font);
-    font-weight: 900; 
-    margin: 0;
-    line-height: 1.25; 
-    margin-bottom: 2rem;
-}
-  
-p.cta-subheading {
-    font-size: 5rem;
-    font-family: var(--minimalist-font);
-    font-weight: 500;
-}
-
-.contact-card {
-    font-size: 1.75rem;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-
-.contact-icon {
-    height: 20px;
-}
-
-.cta-reachout {
-    font-size: 6rem;
-}
-
-@media (max-width: 768px) {
-    .cta-content {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-
-    .cta-left, .cta-right {
-        align-items: center;
-    }
-
-    .cta-left h1 {
-        font-size: 4rem;
-        text-align: center;
-        margin-bottom: 2rem; 
-
-    .cta-subheading {
-        font-size: 2rem;
-        margin-top: 0;
-    }
-
-    .contact-card {
-        font-size: 1.5rem;
-        flex-direction: column;
-    }
-
-    .contact-icon {
-        height: 25px;
-        margin-bottom: 0.5rem;
-    }
-
-}}
-
-/** ==========================
-* ==== SECTION 4: CONTACT =====
-* ============================*/
-
-.contact {
     font-family: var(--bold-font);
-    min-height: 70vh; /* Increase the height to provide more space */
     color: white;
-    padding: 20px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     justify-content: flex-start;
-    margin-bottom: 3em;
+    border-bottom: 2px solid white;
+    padding: 100px 0;
 }
 
 .reachout-heading {
@@ -752,17 +635,14 @@ p.cta-subheading {
     flex: 1;
     display: flex;
     flex-direction: column;
-    align-items: ce;
+    align-items: center;
     justify-content: flex-start;
     margin-top: -1.5rem;
 }
 
-
 .cta-right .cta-subheading, .cta-right .contact-card {
     margin-bottom: 1rem; 
 }
-
-
 
 .cta-right .contact-card {
     display: flex;
@@ -771,26 +651,25 @@ p.cta-subheading {
     gap: 1rem;
     margin-bottom: .25rem;
     margin-top: 2rem;
-}
-
-
-  
+}  
 
 .cta-heading {
     font-size: 8rem; 
     font-family: var(--main-font);
-    font-weight: 900; 
+    font-weight: 900;
     margin: 0;
-    line-height: 1.25; 
-    margin-bottom: 2rem;
+    line-height: 1.25;
 }
-  
+
+.cta-heading:nth-of-type(2), .cta-heading:nth-of-type(3) {
+    margin-top: 2rem;
+}
+
 .cta-subheading {
     font-size: 2.75rem;
     font-family: var(--main-font);
 }
 
-  
 .contact-card {
     font-size: 1.75rem;
     display: flex;
@@ -806,8 +685,6 @@ p.cta-subheading {
     font-size: 6rem;
 }
 
-
-
 @media (max-width: 768px) {
     .cta-content {
         flex-direction: column;
@@ -819,8 +696,8 @@ p.cta-subheading {
         align-items: center;
     }
 
-    .cta-left h1 {
-        font-size: 4rem;
+    .cta-heading {
+        font-size: 6rem;
         text-align: center;
         margin-bottom: 2rem; 
     }
@@ -830,7 +707,7 @@ p.cta-subheading {
     }
 
     .cta-subheading {
-        font-size: 2rem;
+        font-size: 3rem;
         margin-top: 0;
     }
 
@@ -854,8 +731,8 @@ p.cta-subheading {
 .latest-projects {
   background-color: black;
   color: white;
-  padding: 50px 0;
-  padding: 20px 0;
+  border-bottom: 2px solid white;
+  padding: 100px 0;
 }
 
 .projects-container {
