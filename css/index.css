@@ -197,6 +197,7 @@ p.hero-subhead {
         display: flex;
         flex-direction: row;
         overflow: hidden;
+        border-bottom: 2px solid rgba(90, 87, 87, 0.8);
 
         span {
             position: relative;
@@ -245,6 +246,19 @@ p.hero-subhead {
         height: 80%;
         .keyword-sub {
             font-size: 4rem;
+        }
+
+        .keyword-sub:nth-of-type(1) {
+            justify-self: center;
+            align-self: center;
+        }
+        .keyword-sub:nth-of-type(2) {
+            justify-self: center;
+            align-self: center;
+        }
+        .keyword-sub:nth-of-type(3) {
+            justify-self: center;
+            align-self: center;
         }
 
         .keyword-sub:nth-of-type(3) span .after {
@@ -859,9 +873,9 @@ p.cta-subheading {
   margin-right: 50px;
 }
 
-.project-text h2 {
+.project-text h1 {
   font-family: var(--bold-font);
-  font-size: 4.5rem;
+  font-size: 6rem;
   font-weight: bold;
   margin: 0;
   letter-spacing: 1px;
