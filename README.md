@@ -1,5 +1,7 @@
 # Interactive Frontend Playground 🎨
 
+🔗 **Live Demo:** [Click here to try it](https://gherve.vercel.app)
+
 An experimental frontend project showcasing **smooth animations** and **interactive elements** built with HTML, CSS, JavaScript, and GSAP.  
 The project includes a dedicated **Playground Page** to test, tweak, and explore creative UI effects.
 
