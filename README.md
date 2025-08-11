@@ -7,7 +7,7 @@ The project includes a dedicated **Playground Page** to test, tweak, and explore
 
 ## 📸 Preview
 
-![Project Preview](screenshotplayground.jpg)  
+![Project Preview](screenshot.png)  
 *(Replace this with your actual screenshot file name if different)*
 
 ---
